@@ -4,4 +4,11 @@
     "description": "An interactive warding and support reference for DOTA 2",
     "author": "Francis Yuan",
     "license": "MIT",
+    "repository" : {
+        "type" : "git",
+        "url" : "https://github.com/kusera/sentrii"
+    },
+    "bugs" : {
+        "url" : "https://github.com/kusera/sentrii/issues"
+    }
 }
