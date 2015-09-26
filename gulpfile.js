@@ -1,14 +1,14 @@
-var gulp = require('gulp'),
-    uglify = require('gulp-uglify'),
-    htmlreplace = require('gulp-html-replace'),
+var babelify = require('babelify'),
+    browserify = require('browserify'),
+    gulp = require('gulp'),
     concat = require('gulp-concat'),
+    htmlreplace = require('gulp-html-replace'),
+    livereload = require('gulp-livereload'),
     cssmin = require('gulp-minify-css'),
     streamify = require('gulp-streamify'),
-    livereload = require('gulp-livereload')
+    uglify = require('gulp-uglify'),
     source = require('vinyl-source-stream'),
-    browserify = require('browserify'),
-    watchify = require('watchify'),
-    reactify = require('reactify');
+    watchify = require('watchify');
     
 var path = {
     HTML: 'src/index.html',
@@ -60,7 +60,7 @@ gulp.task('copyImages', function() {
 gulp.task('bundleJS', function() {
     var browser = browserify({
         entries: [path.ENTRY_POINT],
-        transform: [reactify],
+        transform: [babelify],
         debug: true,
         cache: {}, packageCache: {}, fullpaths: true
     })
@@ -79,7 +79,7 @@ gulp.task('watch', function() {
     
     var watcher = watchify(browserify({
         entries: [path.ENTRY_POINT],
-        transform: [reactify],
+        transform: [babelify],
         debug: true,
         cache: {}, packageCache: {}, fullpaths: true
     }));
@@ -102,7 +102,7 @@ gulp.task('watch', function() {
 gulp.task('build', function() {
     browserify({
         entries: [path.ENTRY_POINT],
-        transform: [reactify]
+        transform: [babelify]
     })
         .bundle()
         .pipe(source(path.MINIFIED_JS))
