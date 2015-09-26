@@ -23,7 +23,7 @@ var path = {
     APPEND_IMAGES: 'images/',
     DEST_PROD: 'prod/',
     DEST_DEV: 'dev/',
-    ENTRY_POINT: 'src/js/app.js'
+    ENTRY_POINT: 'src/js/index.js'
 };
 
 /* 
