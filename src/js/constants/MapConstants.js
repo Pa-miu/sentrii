@@ -1,0 +1,3 @@
+export const TOGGLE_FACTION = 'TOGGLE_FACTION';
+export const TOGGLE_FILTER = 'TOGGLE_FILTER';
+export const SWITCH_ALL = 'SWITCH_ALL';
