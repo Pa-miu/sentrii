@@ -22,14 +22,14 @@ const initialState = {
   },
 };
 
-let toggleFactionHelper = function (state){
+let toggleFactionHelper = function (state) {
   return {
     ...state,
     isRadiant: !state.isRadiant
   };
 }
 
-let toggleFilterHelper = function(state, action){
+let toggleFilterHelper = function(state, action) {
   let group = action.payload.group,
       filter = action.payload.filter;
   let newGroup = update(state[group], {
@@ -38,7 +38,7 @@ let toggleFilterHelper = function(state, action){
   return {...state, [group]: newGroup};
 }
 
-let switchAllHelper = function(state, action){
+let switchAllHelper = function(state, action) {
   let group = action.payload.group,
       on = action.payload.on;
   let newGroup = update({}, {$merge: state[group]});

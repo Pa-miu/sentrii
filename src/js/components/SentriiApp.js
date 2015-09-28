@@ -1,7 +1,9 @@
-import React, {Component, Proptypes} from 'react';
+import React, {Component, PropTypes} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as MapActions from '../actions/MapActions';
+
+import TestButtons from './TestButtons';
 
 class SentriiApp extends Component {
   constructor() {
@@ -21,30 +23,27 @@ class SentriiApp extends Component {
   render() {
     const {dispatch} = this.props;
     const actions = bindActionCreators(MapActions, dispatch);
-    this.printState();
-    return (
-      <div>
-        <button onClick={(e) => actions.toggleFaction()}>
-          Test Faction Toggle
-        </button>
-          <br/>
-        <button onClick={(e) => actions.toggleFilter('wardFilters', 'runes')}>
-          Test Rune Toggle
-        </button>
-          <br/>
-        <button onClick={(e) => actions.switchAll('campFilters', true)}>
-          Test Switch On Camps
-        </button>
-          <br/>
-        <button onClick={(e) => actions.switchAll('campFilters', false)}>
-          Test Switch Off Camps
-        </button>
-      </div>
+
+    return(
+      <TestButtons
+        printState={this.printState}
+        toggleFaction={actions.toggleFaction}
+        toggleFilter={actions.toggleFilter}
+        switchAll={actions.switchAll}
+      />
     );
   }
 };
 
-function mapStateToProps(state){
+SentriiApp.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  isRadiant: PropTypes.bool.isRequired,
+  wardFilters: PropTypes.object.isRequired,
+  campFilters: PropTypes.object.isRequired,
+  truesightFilters: PropTypes.object.isRequired
+};
+
+function mapStateToProps(state) {
     return {
       isRadiant: state.isRadiant,
       wardFilters: state.wardFilters,
