@@ -58,7 +58,7 @@ gulp.task('copyImages', () => {
 });
 
 gulp.task('bundleJS', () => {
-  var browser = browserify({
+  const browser = browserify({
       entries: [path.ENTRY_POINT],
       transform: [babelify],
       debug: true,
@@ -69,26 +69,26 @@ gulp.task('bundleJS', () => {
           .pipe(source(path.DEV_JS))
           .pipe(gulp.dest(path.DEST_DEV + path.APPEND_JS));
   console.log('Bundled scripts');
-  });
+});
 
-  gulp.task('watch', () => {
+gulp.task('watch', () => {
   gulp.watch(path.HTML, ['copyHTML']);
   gulp.watch(path.STYLES, ['copyCSS']);
   gulp.watch(path.IMAGES, ['copyImage']);
 
-  var watcher = watchify(browserify({
-      entries: [path.ENTRY_POINT],
-      transform: [babelify],
-      debug: true,
-      cache: {}, packageCache: {}, fullpaths: true
+  const watcher = watchify(browserify({
+    entries: [path.ENTRY_POINT],
+    transform: [babelify],
+    debug: true,
+    cache: {}, packageCache: {}, fullpaths: true
   }));
 
   return watcher.on('update', () => {
-      watcher.bundle().on('error', function(err){ console.log(err.message); })
+    watcher.bundle().on('error', (e) => console.log(e.message))
             .pipe(source(path.DEV_JS))
             .pipe(gulp.dest(path.DEST_DEV + path.APPEND_JS))
             .pipe(livereload());
-      console.log('Updated');
+    console.log('Updated');
   })
       .bundle()
       .pipe(source(path.DEV_JS))
