@@ -77,6 +77,7 @@ export default class MapContent extends Component {
 MapContent.propTypes = {
   actions: PropTypes.shape({
     switchFaction: PropTypes.func.isRequired,
+    toggleFilter: PropTypes.func.isRequired,
     toggleAll: PropTypes.func.isRequired
   }),
   leftControls: PropTypes.array,
