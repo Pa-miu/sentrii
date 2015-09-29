@@ -2,9 +2,12 @@
 >An interactive warding and support reference for DOTA 2
 
 ### Mockup 1
-![Sentrii Mockup 2](./wireframes/mockup_4.png "Sentrii Mockup")
+![Sentrii Mockup 1](./wireframes/mockup_5.png "Sentrii Mockup")
 
 ### Mockup 2
+![Sentrii Mockup 2](./wireframes/mockup_4.png "Sentrii Mockup")
+
+### Mockup 3
 ![Sentrii Mockup 3](./wireframes/mockup_3.png "Sentrii Mockup")
 
 ### Install
