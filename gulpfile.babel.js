@@ -1,39 +1,39 @@
-var babelify = require('babelify'),
-    browserify = require('browserify'),
-    gulp = require('gulp'),
-    concat = require('gulp-concat'),
-    htmlreplace = require('gulp-html-replace'),
-    livereload = require('gulp-livereload'),
-    cssmin = require('gulp-minify-css'),
-    streamify = require('gulp-streamify'),
-    uglify = require('gulp-uglify'),
-    source = require('vinyl-source-stream'),
-    watchify = require('watchify');
+import babelify from 'babelify';
+import browserify from 'browserify';
+import gulp from 'gulp';
+import concat from 'gulp-concat';
+import htmlreplace from 'gulp-html-replace';
+import livereload from 'gulp-livereload';
+import cssmin from 'gulp-minify-css';
+import streamify from 'gulp-streamify';
+import uglify from 'gulp-uglify';
+import source from 'vinyl-source-stream';
+import watchify from 'watchify';
 
-var path = {
-    HTML: 'src/index.html',
-    STYLES: 'src/styles/**/*.css',
-    IMAGES: 'src/images/**/*.png',
-    DEV_JS: 'build.js',
-    DEV_CSS: 'style.css',
-    MINIFIED_JS: 'build.min.js',
-    MINIFIED_CSS: 'build.min.css',
-    APPEND_JS: 'js/',
-    APPEND_STYLES: 'styles/',
-    APPEND_IMAGES: 'images/',
-    DEST_PROD: 'prod/',
-    DEST_DEV: 'dev/',
-    ENTRY_POINT: 'src/js/app.js'
+const path = {
+      HTML: 'src/index.html',
+      STYLES: 'src/styles/**/*.css',
+      IMAGES: 'src/images/**/*.png',
+      DEV_JS: 'build.js',
+      DEV_CSS: 'style.css',
+      MINIFIED_JS: 'build.min.js',
+      MINIFIED_CSS: 'build.min.css',
+      APPEND_JS: 'js/',
+      APPEND_STYLES: 'styles/',
+      APPEND_IMAGES: 'images/',
+      DEST_PROD: 'prod/',
+      DEST_DEV: 'dev/',
+      ENTRY_POINT: 'src/js/app.js'
 };
 
 /*
   Development Tasks
 */
-gulp.task('refresh', function() {
+gulp.task('refresh', () => {
   livereload.listen();
 });
 
-gulp.task('copyHTML', function() {
+gulp.task('copyHTML', () => {
   gulp.src(path.HTML)
       .pipe(htmlreplace({
         js : path.APPEND_JS + path.DEV_JS,
@@ -43,7 +43,7 @@ gulp.task('copyHTML', function() {
       .pipe(livereload());
 });
 
-gulp.task('copyCSS', function() {
+gulp.task('copyCSS', () => {
   gulp.src(path.STYLES)
       .pipe(concat(path.DEV_CSS))
       .pipe(cssmin())
@@ -51,13 +51,13 @@ gulp.task('copyCSS', function() {
       .pipe(livereload());
 });
 
-gulp.task('copyImages', function() {
+gulp.task('copyImages', () => {
   gulp.src(path.IMAGES)
     .pipe(gulp.dest(path.DEST_DEV + path.APPEND_IMAGES))
     .pipe(livereload());
 });
 
-gulp.task('bundleJS', function() {
+gulp.task('bundleJS', () => {
   var browser = browserify({
       entries: [path.ENTRY_POINT],
       transform: [babelify],
@@ -71,7 +71,7 @@ gulp.task('bundleJS', function() {
   console.log('Bundled scripts');
   });
 
-  gulp.task('watch', function() {
+  gulp.task('watch', () => {
   gulp.watch(path.HTML, ['copyHTML']);
   gulp.watch(path.STYLES, ['copyCSS']);
   gulp.watch(path.IMAGES, ['copyImage']);
@@ -83,7 +83,7 @@ gulp.task('bundleJS', function() {
       cache: {}, packageCache: {}, fullpaths: true
   }));
 
-  return watcher.on('update', function() {
+  return watcher.on('update', () => {
       watcher.bundle().on('error', function(err){ console.log(err.message); })
             .pipe(source(path.DEV_JS))
             .pipe(gulp.dest(path.DEST_DEV + path.APPEND_JS))
@@ -98,7 +98,7 @@ gulp.task('bundleJS', function() {
 /*
   Production Tasks
 */
-gulp.task('build', function() {
+gulp.task('build', () => {
   browserify({
       entries: [path.ENTRY_POINT],
       transform: [babelify]
@@ -109,7 +109,7 @@ gulp.task('build', function() {
       .pipe(gulp.dest(path.DEST_PROD + path.APPEND_JS))
   });
 
-  gulp.task('buildHTML', function() {
+  gulp.task('buildHTML', () => {
   gulp.src(path.HTML)
       .pipe(htmlreplace({
           js : path.APPEND_JS + path.MINIFIED_JS,
@@ -118,14 +118,14 @@ gulp.task('build', function() {
       .pipe(gulp.dest(path.DEST_PROD));
   });
 
-  gulp.task('buildCSS', function() {
+  gulp.task('buildCSS', () => {
   gulp.src(path.STYLES)
       .pipe(concat(path.MINIFIED_CSS))
       .pipe(cssmin())
       .pipe(gulp.dest(path.DEST_PROD + path.APPEND_STYLES))
   });
 
-  gulp.task('buildImages', function() {
+  gulp.task('buildImages', () => {
   gulp.src(path.IMAGES)
       .pipe(gulp.dest(path.DEST_PROD + path.APPEND_IMAGES))
 });
