@@ -1,28 +1,29 @@
-import {TOGGLE_FACTION, TOGGLE_FILTER, SWITCH_ALL} from '../constants/MapConstants';
 import React from 'react/addons'
+import {SWITCH_FACTION, TOGGLE_FILTER, TOGGLE_ALL} from '../constants/MapConstants';
+
 let update = React.addons.update;
 
 const initialState = {
-  isRadiant: true,
-  wardFilters: {
+  isRadiant: true,          // Expressed as 'radiant' or 'dire' in the UI
+  campFilters: {            // Filters for campFilters
+    spawn: false,
+    camp: false,
+    stack: false
+  },
+  truesightFilters: {        // Filters for truesightFilters
+    sentry: false,
+    tower: false
+  },
+  wardFilters: {            // Filters for wardFilters
     runes: false,
     offense: false,
     defense: false,
     push: false,
     utility: false
   },
-  campFilters: {
-    spawn: false,
-    camp: false,
-    stack: false
-  },
-  truesightFilters: {
-    sentry: false,
-    tower: false
-  },
 };
 
-let toggleFactionHelper = function (state) {
+let switchFactionHelper = function (state) {
   return {
     ...state,
     isRadiant: !state.isRadiant
@@ -38,7 +39,7 @@ let toggleFilterHelper = function(state, action) {
   return {...state, [group]: newGroup};
 }
 
-let switchAllHelper = function(state, action) {
+let toggleAllHelper = function(state, action) {
   let group = action.payload.group,
       on = action.payload.on;
   let newGroup = update({}, {$merge: state[group]});
@@ -50,12 +51,12 @@ let switchAllHelper = function(state, action) {
 
 export default function MapReducer(state = initialState, action) {
   switch (action.type) {
-    case TOGGLE_FACTION:
-      return toggleFactionHelper(state);
+    case SWITCH_FACTION:
+      return switchFactionHelper(state);
     case TOGGLE_FILTER:
       return toggleFilterHelper(state, action);
-    case SWITCH_ALL:
-      return switchAllHelper(state, action);
+    case TOGGLE_ALL:
+      return toggleAllHelper(state, action);
     default:
       return state;
   };

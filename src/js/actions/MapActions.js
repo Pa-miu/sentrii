@@ -1,8 +1,8 @@
-import {TOGGLE_FACTION, TOGGLE_FILTER, SWITCH_ALL} from '../constants/MapConstants';
+import {SWITCH_FACTION, TOGGLE_FILTER, TOGGLE_ALL} from '../constants/MapConstants';
 
-export function toggleFaction() {
+export function switchFaction() {
   return {
-    type: TOGGLE_FACTION
+    type: SWITCH_FACTION
   };
 };
 
@@ -16,9 +16,9 @@ export function toggleFilter(group, filter) {
   };
 };
 
-export function switchAll(group, on) {
+export function toggleAll(group, on) {
   return {
-    type: SWITCH_ALL,
+    type: TOGGLE_ALL,
     payload: {
       group,
       on
