@@ -1,5 +1,5 @@
-import React, {Component, PropTypes} from 'react';
-import {FILTER_GROUP, FACTION_GROUP} from '../constants/MapConstants';
+import React, { Component, PropTypes } from 'react';
+import { FILTER_GROUP, FACTION_GROUP } from '../constants/MapConstants';
 import ControlLabel from './ControlLabel';
 import FilterToggle from './FilterToggle';
 import FactionSwitch from './FactionSwitch';
@@ -24,21 +24,21 @@ export default class MapContent extends Component {
   }
 
   generateFilterGroup(configObject) {
-    let filters = [];
-    for (let key in configObject.filters) {
+    const filters = [];
+    for (const key in configObject.filters) {
       filters.push(<FilterToggle key={key} name={key}/>);
     }
-    return(
-      <div key={configObject.label} className="control-group">
+    return (
+      <div key={configObject.label} className='control-group'>
         <ControlLabel label={configObject.label}/>
         {filters}
       </div>
-    )
+    );
   }
 
   generateFactionGroup(configObject) {
-    return(
-      <div key={configObject.label} className="control-group">
+    return (
+      <div key={configObject.label} className='control-group'>
         <ControlLabel label={configObject.label}/>
         <FactionSwitch
           switch={configObject.switch}
@@ -46,7 +46,7 @@ export default class MapContent extends Component {
           offtext={configObject.offtext}
         />
       </div>
-    )
+    );
   }
 
   /*
@@ -57,16 +57,16 @@ export default class MapContent extends Component {
   */
 
   render() {
-    let leftControls = this.props.leftControls.map(this.generateControls);
-    let rightControls = this.props.rightControls.map(this.generateControls);
+    const leftControls = this.props.leftControls.map(this.generateControls);
+    const rightControls = this.props.rightControls.map(this.generateControls);
     return (
-      <div className="map-content-container">
-        <div className="left-container">
+      <div className='map-content-container'>
+        <div className='left-container'>
           {leftControls}
         </div>
-        <div className="pixi-container">
+        <div className='pixi-container'>
         </div>
-        <div className="right-container">
+        <div className='right-container'>
           {rightControls}
         </div>
       </div>
@@ -77,9 +77,8 @@ export default class MapContent extends Component {
 MapContent.propTypes = {
   actions: PropTypes.shape({
     switchFaction: PropTypes.func.isRequired,
-    switchFaction: PropTypes.func.isRequired,
     toggleAll: PropTypes.func.isRequired
   }),
-  left: PropTypes.array,
-  right: PropTypes.array
-}
+  leftControls: PropTypes.array,
+  rightControls: PropTypes.array
+};

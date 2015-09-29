@@ -1,4 +1,4 @@
-import React, {Component, ProtoType} from 'react';
+import React, { Component, PropTypes} from 'react';
 
 export default class ControlLabel extends Component {
   constructor() {
@@ -7,7 +7,11 @@ export default class ControlLabel extends Component {
 
   render() {
     return (
-      <div className="control-label">{this.props.label}</div>
+      <div className='control-label'>{this.props.label}</div>
     );
   }
 }
+
+ControlLabel.propTypes = {
+  label: PropTypes.string.isRequired
+};

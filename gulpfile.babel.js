@@ -11,19 +11,19 @@ import source from 'vinyl-source-stream';
 import watchify from 'watchify';
 
 const path = {
-      HTML: 'src/index.html',
-      STYLES: 'src/styles/**/*.css',
-      IMAGES: 'src/images/**/*.png',
-      DEV_JS: 'build.js',
-      DEV_CSS: 'style.css',
-      MINIFIED_JS: 'build.min.js',
-      MINIFIED_CSS: 'build.min.css',
-      APPEND_JS: 'js/',
-      APPEND_STYLES: 'styles/',
-      APPEND_IMAGES: 'images/',
-      DEST_PROD: 'prod/',
-      DEST_DEV: 'dev/',
-      ENTRY_POINT: 'src/js/app.js'
+  HTML: 'src/index.html',
+  STYLES: 'src/styles/**/*.css',
+  IMAGES: 'src/images/**/*.png',
+  DEV_JS: 'build.js',
+  DEV_CSS: 'style.css',
+  MINIFIED_JS: 'build.min.js',
+  MINIFIED_CSS: 'build.min.css',
+  APPEND_JS: 'js/',
+  APPEND_STYLES: 'styles/',
+  APPEND_IMAGES: 'images/',
+  DEST_PROD: 'prod/',
+  DEST_DEV: 'dev/',
+  ENTRY_POINT: 'src/js/app.js'
 };
 
 /*
@@ -36,8 +36,8 @@ gulp.task('refresh', () => {
 gulp.task('copyHTML', () => {
   gulp.src(path.HTML)
       .pipe(htmlreplace({
-        js : path.APPEND_JS + path.DEV_JS,
-        css : path.APPEND_STYLES + path.DEV_CSS
+        js: path.APPEND_JS + path.DEV_JS,
+        css: path.APPEND_STYLES + path.DEV_CSS
       }))
       .pipe(gulp.dest(path.DEST_DEV))
       .pipe(livereload());
@@ -59,10 +59,10 @@ gulp.task('copyImages', () => {
 
 gulp.task('bundleJS', () => {
   const browser = browserify({
-      entries: [path.ENTRY_POINT],
-      transform: [babelify],
-      debug: true,
-      cache: {}, packageCache: {}, fullpaths: true
+    entries: [path.ENTRY_POINT],
+    transform: [babelify],
+    debug: true,
+    cache: {}, packageCache: {}, fullpaths: true
   });
 
   browser.bundle()
@@ -100,34 +100,34 @@ gulp.task('watch', () => {
 */
 gulp.task('build', () => {
   browserify({
-      entries: [path.ENTRY_POINT],
-      transform: [babelify]
+    entries: [path.ENTRY_POINT],
+    transform: [babelify]
   })
-      .bundle()
-      .pipe(source(path.MINIFIED_JS))
-      .pipe(streamify(uglify({file:path.MINIFIED_JS})))
-      .pipe(gulp.dest(path.DEST_PROD + path.APPEND_JS))
-  });
+    .bundle()
+    .pipe(source(path.MINIFIED_JS))
+    .pipe(streamify(uglify({ file: path.MINIFIED_JS })))
+    .pipe(gulp.dest(path.DEST_PROD + path.APPEND_JS));
+});
 
-  gulp.task('buildHTML', () => {
+gulp.task('buildHTML', () => {
   gulp.src(path.HTML)
       .pipe(htmlreplace({
-          js : path.APPEND_JS + path.MINIFIED_JS,
-          css : path.APPEND_STYLES + path.MINIFIED_CSS
+        js: path.APPEND_JS + path.MINIFIED_JS,
+        css: path.APPEND_STYLES + path.MINIFIED_CSS
       }))
       .pipe(gulp.dest(path.DEST_PROD));
-  });
+});
 
-  gulp.task('buildCSS', () => {
+gulp.task('buildCSS', () => {
   gulp.src(path.STYLES)
       .pipe(concat(path.MINIFIED_CSS))
       .pipe(cssmin())
-      .pipe(gulp.dest(path.DEST_PROD + path.APPEND_STYLES))
-  });
+      .pipe(gulp.dest(path.DEST_PROD + path.APPEND_STYLES));
+});
 
-  gulp.task('buildImages', () => {
+gulp.task('buildImages', () => {
   gulp.src(path.IMAGES)
-      .pipe(gulp.dest(path.DEST_PROD + path.APPEND_IMAGES))
+      .pipe(gulp.dest(path.DEST_PROD + path.APPEND_IMAGES));
 });
 
 /* Composited Tasks */

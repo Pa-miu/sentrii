@@ -1,4 +1,4 @@
-import React, {Component, PropTypes} from 'react';
+import React, { Component, PropTypes } from 'react';
 
 export default class TestButtons extends Component {
   constructor() {
@@ -6,17 +6,17 @@ export default class TestButtons extends Component {
   }
 
   render() {
-    return(
+    return (
       <div>
-        <button onClick={(e) => this.props.printState()}>Print State</button>
+        <button onClick={() => this.props.printState()}>Print State</button>
           <br/>
-        <button onClick={(e) => this.props.switchFaction()}>Toggle Faction</button>
+        <button onClick={() => this.props.switchFaction()}>Toggle Faction</button>
           <br/>
-        <button onClick={(e) => this.props.toggleFilter('wardFilters', 'runes')}>Toggle Runes</button>
+        <button onClick={() => this.props.toggleFilter('wardFilters', 'runes')}>Toggle Runes</button>
           <br/>
-        <button onClick={(e) => this.props.toggleAll('campFilters', true)}>Turn On campFilters</button>
+        <button onClick={() => this.props.toggleAll('campFilters', true)}>Turn On campFilters</button>
           <br/>
-        <button onClick={(e) => this.props.toggleAll('campFilters', false)}>Turn Off campFilters</button>
+        <button onClick={() => this.props.toggleAll('campFilters', false)}>Turn Off campFilters</button>
       </div>
     );
   }
@@ -25,6 +25,6 @@ export default class TestButtons extends Component {
 TestButtons.propTypes = {
   printState: PropTypes.func.isRequired,
   switchFaction: PropTypes.func.isRequired,
-  toggleFilter: PropTypes.func.isRequired,
-  toggleAll: PropTypes.func.isRequired
+  toggleAll: PropTypes.func.isRequired,
+  toggleFilter: PropTypes.func.isRequired
 };

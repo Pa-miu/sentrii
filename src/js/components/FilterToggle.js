@@ -1,4 +1,4 @@
-import React, {Component, ProtoType} from 'react';
+import React, { Component, PropTypes } from 'react';
 
 export default class FilterToggle extends Component {
   constructor() {
@@ -7,7 +7,11 @@ export default class FilterToggle extends Component {
 
   render() {
     return (
-      <div className="filter-toggle">{this.props.name}</div>
+      <div className='filter-toggle'>{this.props.name}</div>
     );
   }
 }
+
+FilterToggle.propTypes = {
+  name: PropTypes.string.isRequired
+};

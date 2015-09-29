@@ -1,10 +1,10 @@
-import {SWITCH_FACTION, TOGGLE_FILTER, TOGGLE_ALL} from '../constants/MapConstants';
+import { SWITCH_FACTION, TOGGLE_FILTER, TOGGLE_ALL } from '../constants/MapConstants';
 
 export function switchFaction() {
   return {
     type: SWITCH_FACTION
   };
-};
+}
 
 export function toggleFilter(group, filter) {
   return {
@@ -14,7 +14,7 @@ export function toggleFilter(group, filter) {
       filter
     }
   };
-};
+}
 
 export function toggleAll(group, on) {
   return {
@@ -24,4 +24,4 @@ export function toggleAll(group, on) {
       on
     }
   };
-};
+}

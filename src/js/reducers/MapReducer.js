@@ -1,7 +1,7 @@
-import React from 'react/addons'
-import {SWITCH_FACTION, TOGGLE_FILTER, TOGGLE_ALL} from '../constants/MapConstants';
+import React from 'react/addons';
+import { SWITCH_FACTION, TOGGLE_FILTER, TOGGLE_ALL } from '../constants/MapConstants';
 
-let update = React.addons.update;
+const update = React.addons.update;
 
 const initialState = {
   isRadiant: true,          // Expressed as 'radiant' or 'dire' in the UI
@@ -20,34 +20,34 @@ const initialState = {
     defense: false,
     push: false,
     utility: false
-  },
+  }
 };
 
-let switchFactionHelper = function (state) {
+const switchFactionHelper = function switchFactionHelper(state) {
   return {
     ...state,
     isRadiant: !state.isRadiant
   };
-}
+};
 
-let toggleFilterHelper = function(state, action) {
-  let group = action.payload.group,
-      filter = action.payload.filter;
-  let newGroup = update(state[group], {
-    [filter]:{$set: !state[group][filter]}
+const toggleFilterHelper = function toggleFilterHelper(state, action) {
+  const group = action.payload.group;
+  const filter = action.payload.filter;
+  const newGroup = update(state[group], {
+    [filter]: { $set: !state[group][filter] }
   });
-  return {...state, [group]: newGroup};
-}
+  return { ...state, [group]: newGroup };
+};
 
-let toggleAllHelper = function(state, action) {
-  let group = action.payload.group,
-      on = action.payload.on;
-  let newGroup = update({}, {$merge: state[group]});
-  for (let key in newGroup){
+const toggleAllHelper = function toggleAllHelper(state, action) {
+  const group = action.payload.group;
+  const on = action.payload.on;
+  const newGroup = update({}, { $merge: state[group] });
+  for (const key in newGroup) {
     newGroup[key] = on;
   }
-  return {...state, [group]: newGroup};
-}
+  return { ...state, [group]: newGroup };
+};
 
 export default function MapReducer(state = initialState, action) {
   switch (action.type) {
@@ -59,5 +59,5 @@ export default function MapReducer(state = initialState, action) {
       return toggleAllHelper(state, action);
     default:
       return state;
-  };
-};
+  }
+}
