@@ -1,0 +1,23 @@
+.map-content-container {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.side-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 20px 0;
+  text-align: center;
+}
+
+.pixi-container {
+  height: 600px;
+}
+
+img.minimap {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}

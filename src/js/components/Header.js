@@ -7,17 +7,15 @@ export default class Header extends Component {
 
   render() {
     return (
-      <div className='header-background'>
-        <div className='header-container'>
-          <div className='title-group'>
-            <div className='title'>Sentrii</div>
-            <div className='subtitle'>A visual reference to warding in Dota 2</div>
-          </div>
-          <div className='navbar'>
-            <div className='nav-item'>Map</div>
-            <div className='nav-item'>Draw</div>
-            <div className='nav-item'>Parse</div>
-          </div>
+      <div className='header-container row no-select'>
+        <div className='title-group col-3-4'>
+          <div className='title'>Sentrii</div>
+          <div className='subtitle'>A visual reference to warding in Dota 2</div>
+        </div>
+        <div className='navbar col-1-4'>
+          <div className='nav-item'>Map</div>
+          <div className='nav-item closed'>Draw</div>
+          <div className='nav-item closed'>Parse</div>
         </div>
       </div>
     );

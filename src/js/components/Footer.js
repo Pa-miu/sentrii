@@ -7,11 +7,11 @@ export default class Footer extends Component {
 
   render() {
     return (
-      <div className='footer-background'>
-        <div className='footer-container'>
-          <div className='copyright'>
-            Copyright {new Date().getFullYear()}. Dota 2 is a registered trademark of Valve Corporation.
-          </div>
+      <div className='footer-container row'>
+        <div className='copyright col-3-4'>
+          {'Copyright ' + new Date().getFullYear() + ' Francis Yuan. Dota 2 is a registered trademark of Valve Corporation.'}
+        </div>
+        <div className='links col-3-4'>
         </div>
       </div>
     );

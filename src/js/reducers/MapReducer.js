@@ -1,20 +1,20 @@
 import React from 'react/addons';
-import { SWITCH_FACTION, TOGGLE_FILTER, TOGGLE_ALL } from '../constants/MapConstants';
+import { SWITCH_FACTION, TOGGLE_FILTER, TOGGLE_GROUP } from '../constants/MapConstants';
 
 const update = React.addons.update;
 
 const initialState = {
   isRadiant: true,          // Expressed as 'radiant' or 'dire' in the UI
-  campFilters: {            // Filters for campFilters
-    spawn: false,
-    camp: false,
+  campFilters: {            // Filters for camps
+    box: false,
+    pull: false,
     stack: false
   },
-  truesightFilters: {        // Filters for truesightFilters
+  truesightFilters: {        // Filters for truesight
     sentry: false,
     tower: false
   },
-  wardFilters: {            // Filters for wardFilters
+  wardFilters: {            // Filters for wards
     runes: false,
     offense: false,
     defense: false,
@@ -39,7 +39,7 @@ const toggleFilterHelper = function toggleFilterHelper(state, action) {
   return { ...state, [group]: newGroup };
 };
 
-const toggleAllHelper = function toggleAllHelper(state, action) {
+const toggleGroupHelper = function toggleGroupHelper(state, action) {
   const group = action.payload.group;
   const on = action.payload.on;
   const newGroup = update({}, { $merge: state[group] });
@@ -55,8 +55,8 @@ export default function MapReducer(state = initialState, action) {
       return switchFactionHelper(state);
     case TOGGLE_FILTER:
       return toggleFilterHelper(state, action);
-    case TOGGLE_ALL:
-      return toggleAllHelper(state, action);
+    case TOGGLE_GROUP:
+      return toggleGroupHelper(state, action);
     default:
       return state;
   }

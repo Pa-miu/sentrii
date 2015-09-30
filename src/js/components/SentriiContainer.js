@@ -13,6 +13,8 @@ class SentriiContainer extends Component {
   constructor() {
     super();
     this.printState = this.printState.bind(this);
+    this.configFilters = this.configFilters.bind(this);
+    this.configFaction = this.configFaction.bind(this);
   }
 
   printState() {
@@ -24,20 +26,29 @@ class SentriiContainer extends Component {
     console.log(this.props.campFilters);
   }
 
+  configFilters(label, filters) {
+    return { type: FILTER_GROUP, label, filters };
+  }
+
+  configFaction(label, ontext, offtext, isRadiant) {
+    return { type: FACTION_GROUP, label, ontext, offtext, switch: isRadiant };
+  }
+
   render() {
     const { dispatch, isRadiant, campFilters, truesightFilters, wardFilters } = this.props;
     const actions = bindActionCreators(MapActions, dispatch);
+
     const leftControls = [
-      { type: FILTER_GROUP, label: 'wardFilters', filters: wardFilters },
-      { type: FILTER_GROUP, label: 'truesightFilters', filters: truesightFilters }
+      this.configFilters('wards', wardFilters),
+      this.configFilters('truesight', truesightFilters)
     ];
     const rightControls = [
-      { type: FACTION_GROUP, label: 'faction', ontext: 'radiant', offtext: 'dire', switch: isRadiant },
-      { type: FILTER_GROUP, label: 'campFilters', filters: campFilters }
+      this.configFaction('faction', 'radiant', 'dire', isRadiant),
+      this.configFilters('camps', campFilters)
     ];
 
     return (
-      <div className='sentrii-container'>
+      <div className='sentrii-container grid'>
         <Header/>
         <MapContent
           actions={actions}

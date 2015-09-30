@@ -26,11 +26,11 @@ export default class MapContent extends Component {
   generateFilterGroup(configObject) {
     const filters = [];
     for (const key in configObject.filters) {
-      filters.push(<FilterToggle key={key} name={key}/>);
+      filters.push(<FilterToggle key={key} label={key}/>);
     }
     return (
       <div key={configObject.label} className='control-group'>
-        <ControlLabel label={configObject.label}/>
+        <ControlLabel label={configObject.label} canToggleGroup/>
         {filters}
       </div>
     );
@@ -49,24 +49,18 @@ export default class MapContent extends Component {
     );
   }
 
-  /*
-    let rightControls = [
-      {type: FACTION_GROUP, label: 'faction', ontext: 'radiant', offtext: 'dire', switch: isRadiant},
-      {type: FILTER_GROUP, label: 'campFilters', filters: campFilters}
-    ];
-  */
-
   render() {
     const leftControls = this.props.leftControls.map(this.generateControls);
     const rightControls = this.props.rightControls.map(this.generateControls);
     return (
-      <div className='map-content-container'>
-        <div className='left-container'>
+      <div className='map-content-container row'>
+        <div className='side-container left col-1-6'>
           {leftControls}
         </div>
-        <div className='pixi-container'>
+        <div className='pixi-container col-4-6'>
+          <img className='minimap' src='./images/minimap683.png' alt='minimap 6.83'/>
         </div>
-        <div className='right-container'>
+        <div className='side-container right col-1-6'>
           {rightControls}
         </div>
       </div>
@@ -78,7 +72,7 @@ MapContent.propTypes = {
   actions: PropTypes.shape({
     switchFaction: PropTypes.func.isRequired,
     toggleFilter: PropTypes.func.isRequired,
-    toggleAll: PropTypes.func.isRequired
+    toggleGroup: PropTypes.func.isRequired
   }),
   leftControls: PropTypes.array,
   rightControls: PropTypes.array

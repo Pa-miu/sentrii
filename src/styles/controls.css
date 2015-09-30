@@ -1,0 +1,90 @@
+.control-group {
+  margin-bottom: 30px;
+}
+
+.control-group .control-label {
+  height: 40px;
+  font-size: 1.2rem;
+  font-weight: 300;
+  line-height: 40px;
+  text-transform: uppercase;
+  cursor: default;
+}
+
+.control-group .control-label.toggle-group {
+  cursor: pointer;
+}
+
+.control-group .control-label.toggle-icon {
+
+}
+
+.control-group .faction-switch {
+  height: 40px;
+  line-height: 40px;
+  cursor: pointer;
+}
+
+.control-group .faction-switch .switch-on {
+  display: inline-block;
+}
+
+.control-group .faction-switch .switch-handle {
+  display: inline-block;
+}
+
+.control-group .faction-switch .switch-off {
+  display: inline-block;
+}
+
+.control-group .filter-toggle {
+  height: 40px;
+  width: 120px;
+  margin: 0 auto;
+  font-size: 1.2rem;
+  line-height: 40px;
+  text-align: center;
+  text-shadow: 0px 1px 1px black, 0px 0px 3px rgb(19, 20, 24);
+  border-left: 2px solid transparent;
+  border-right: 2px solid transparent;
+  background-color: rgb(27, 28, 36);
+  opacity: 0.7;
+  cursor: pointer;
+  transition: opacity 0.1s ease-in-out;
+}
+
+.control-group .filter-toggle .filter-background {
+
+}
+
+.side-container.left .filter-toggle:hover {
+  border-right: 2px solid;
+}
+
+.side-container.right .filter-toggle:hover {
+  border-left: 2px solid;
+}
+
+.control-group .filter-toggle:active {
+  opacity: 1;
+}
+
+/*
+  Filter toggle colors
+*/
+
+/* Wards */
+.runes { color: rgb(255, 121, 121);}
+.offense { color: rgb(255, 174, 115); }
+.defense { color: rgb(217, 255, 102); }
+.push { color: rgb(148, 239, 255)}
+.utility { color: rgb(158, 148, 255); }
+
+/* Truesight */
+.sentry { color: rgb(75, 145, 231); }
+.tower { color: rgb(205, 63, 86); }
+
+/* Camps */
+.box { color: rgb(29, 205, 76); }
+.pull { color: rgb(252, 204, 255); }
+.stack { color: rgb(221, 206, 101); }

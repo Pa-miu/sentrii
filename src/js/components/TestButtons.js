@@ -12,11 +12,11 @@ export default class TestButtons extends Component {
           <br/>
         <button onClick={() => this.props.switchFaction()}>Toggle Faction</button>
           <br/>
-        <button onClick={() => this.props.toggleFilter('wardFilters', 'runes')}>Toggle Runes</button>
+        <button onClick={() => this.props.toggleFilter('wards', 'runes')}>Toggle Runes</button>
           <br/>
-        <button onClick={() => this.props.toggleAll('campFilters', true)}>Turn On campFilters</button>
+        <button onClick={() => this.props.toggleGroup('camps', true)}>Turn On camps</button>
           <br/>
-        <button onClick={() => this.props.toggleAll('campFilters', false)}>Turn Off campFilters</button>
+        <button onClick={() => this.props.toggleGroup('camps', false)}>Turn Off camps</button>
       </div>
     );
   }
@@ -25,6 +25,6 @@ export default class TestButtons extends Component {
 TestButtons.propTypes = {
   printState: PropTypes.func.isRequired,
   switchFaction: PropTypes.func.isRequired,
-  toggleAll: PropTypes.func.isRequired,
-  toggleFilter: PropTypes.func.isRequired
+  toggleFilter: PropTypes.func.isRequired,
+  toggleGroup: PropTypes.func.isRequired
 };

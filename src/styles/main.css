@@ -4,17 +4,21 @@
   box-sizing: border-box;
 }
 
-html, body, #app {
+html, {
   height: 100%;
 }
 
 body {
-  padding: 0;
+  min-height: 100%;
   margin: 0;
   font-family: 'Open Sans', sans-serif;
   color: white;
   background-color: rgb(27, 28, 36);
-  overflow: hidden;
+  overflow-y: auto;
+}
+
+.sentrii-container {
+  margin: 0 auto;
 }
 
 .no-select {

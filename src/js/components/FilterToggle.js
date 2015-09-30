@@ -6,12 +6,15 @@ export default class FilterToggle extends Component {
   }
 
   render() {
+    const { label } = this.props;
     return (
-      <div className='filter-toggle'>{this.props.name}</div>
+      <div className={'filter-toggle ' + label}>
+        {label}
+      </div>
     );
   }
 }
 
 FilterToggle.propTypes = {
-  name: PropTypes.string.isRequired
+  label: PropTypes.string.isRequired
 };
