@@ -74,7 +74,7 @@ gulp.task('bundleJS', () => {
 gulp.task('watch', () => {
   gulp.watch(path.HTML, ['copyHTML']);
   gulp.watch(path.STYLES, ['copyCSS']);
-  gulp.watch(path.IMAGES, ['copyImage']);
+  gulp.watch(path.IMAGES, ['copyImages']);
 
   const watcher = watchify(browserify({
     entries: [path.ENTRY_POINT],
