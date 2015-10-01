@@ -58,7 +58,7 @@ export default class MapContent extends Component {
         <div className='side-container left col-1-6'>
           {leftControls}
         </div>
-        <div className='pixi-container col-4-6-square'>
+        <div className='pixi-container col-4-6'>
           <img className='minimap' src='./images/minimap683-transparent.png' alt='minimap 6.83'/>
         </div>
         <div className='side-container right col-1-6'>
