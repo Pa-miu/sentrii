@@ -41,7 +41,8 @@ export default class MapContent extends Component {
       <div key={configObject.label} className='control-group'>
         <ControlLabel label={configObject.label}/>
         <FactionSwitch
-          switch={configObject.switch}
+          switchFaction={this.props.actions.switchFaction}
+          isRadiant={configObject.isRadiant}
           ontext={configObject.ontext}
           offtext={configObject.offtext}
         />

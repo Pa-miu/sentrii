@@ -31,7 +31,7 @@ class SentriiContainer extends Component {
   }
 
   configFaction(label, ontext, offtext, isRadiant) {
-    return { type: FACTION_GROUP, label, ontext, offtext, switch: isRadiant };
+    return { type: FACTION_GROUP, label, ontext, offtext, isRadiant };
   }
 
   render() {
