@@ -16,7 +16,7 @@ class SentriiContainer extends Component {
     this.configFaction = this.configFaction.bind(this);
   }
 
-  configFilters(label, filters) {
+configFilters(label, filters) {
     return { type: FILTER_GROUP, label, filters };
   }
 
