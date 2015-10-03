@@ -6,7 +6,6 @@ import sinonChai from 'sinon-chai';
 let { assert, expect } = chai,
     { TestUtils } = React.addons;
 
-chai.should();
 chai.use(sinonChai);
 
 export {
@@ -21,6 +20,5 @@ export {
 
 /*
  Add the following code to import necessary modules to test specs
-
-  import { React, sinon, assert, expect, TestUtils } from '../../test_helper';
+  import { React, sinon, assert, expect, TestUtils } from '../test_exports';
 */
