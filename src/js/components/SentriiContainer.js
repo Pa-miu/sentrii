@@ -21,9 +21,9 @@ class SentriiContainer extends Component {
     console.log('Is Radiant');
     console.log(this.props.isRadiant);
     console.log('Ward Filters');
-    console.log(this.props.wardFilters);
+    console.log(this.props.ward);
     console.log('Camp Filters');
-    console.log(this.props.campFilters);
+    console.log(this.props.camp);
   }
 
   configFilters(label, filters) {
@@ -35,16 +35,16 @@ class SentriiContainer extends Component {
   }
 
   render() {
-    const { dispatch, isRadiant, campFilters, truesightFilters, wardFilters } = this.props;
+    const { dispatch, isRadiant, camp, truesight, ward } = this.props;
     const actions = bindActionCreators(MapActions, dispatch);
 
     const leftControls = [
-      this.configFilters('wards', wardFilters),
-      this.configFilters('truesight', truesightFilters)
+      this.configFilters('ward', ward),
+      this.configFilters('truesight', truesight)
     ];
     const rightControls = [
       this.configFaction('faction', 'radiant', 'dire', isRadiant),
-      this.configFilters('camps', campFilters)
+      this.configFilters('camp', camp)
     ];
 
     return (
@@ -62,19 +62,19 @@ class SentriiContainer extends Component {
 }
 
 SentriiContainer.propTypes = {
-  campFilters: PropTypes.object.isRequired,
+  camp: PropTypes.object.isRequired,
   dispatch: PropTypes.func.isRequired,
   isRadiant: PropTypes.bool.isRequired,
-  truesightFilters: PropTypes.object.isRequired,
-  wardFilters: PropTypes.object.isRequired
+  truesight: PropTypes.object.isRequired,
+  ward: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {
   return {
     isRadiant: state.isRadiant,
-    campFilters: state.campFilters,
-    truesightFilters: state.truesightFilters,
-    wardFilters: state.wardFilters
+    camp: state.camp,
+    truesight: state.truesights,
+    wardF: state.ward
   };
 }
 

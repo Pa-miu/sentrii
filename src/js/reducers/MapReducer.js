@@ -5,16 +5,16 @@ const update = React.addons.update;
 
 const initialState = {
   isRadiant: true,          // Expressed as 'radiant' or 'dire' in the UI
-  campFilters: {            // Filters for camps
+  camp: {            // Filters for camps
     box: false,
     pull: false,
     stack: false
   },
-  truesightFilters: {        // Filters for truesight
+  truesight: {        // Filters for truesight
     sentry: false,
     tower: false
   },
-  wardFilters: {            // Filters for wards
+  ward: {            // Filters for wards
     runes: false,
     offense: false,
     defense: false,
