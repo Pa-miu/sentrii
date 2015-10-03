@@ -1,14 +1,18 @@
+/*
+  Source: https://reactjsnews.com/testing-in-react/
+*/
 require('babel/register')({
+  highlightCode: false,
   stage: 0
 });
 
-var jsdom = require('node-jsdom');
+import jsdom from 'node-jsdom';
 
 // setup the simplest document possible
-var doc = jsdom.jsdom('<!doctype html><html><body></body></html>');
+let doc = jsdom.jsdom('<!doctype html><html><body></body></html>');
 
 // get the window object out of the document
-var win = doc.defaultView;
+let win = doc.defaultView;
 
 // set globals for mocha that make access to document and window feel
 // natural in the test environment
