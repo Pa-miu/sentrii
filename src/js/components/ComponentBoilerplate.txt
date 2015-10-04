@@ -1,0 +1,16 @@
+import React, {Component, ProtoType} from 'react';
+
+export default class <Class Name> extends Component {
+  constructor() {
+    super();
+  }
+
+  render() {
+    return (
+    );
+  }
+}
+
+<Class Name>.propTypes = {
+
+};

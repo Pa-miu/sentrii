@@ -1,0 +1,159 @@
+.control-group {
+  margin-bottom: 30px;
+}
+
+/* Control label */
+.control-group .control-header-container{
+  display: flex;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.control-group .control-header-container:hover > .control-header-label {
+  margin: 0px 10px;
+}
+
+.control-group .control-header-container:hover > .control-header-icon {
+  cursor: pointer;
+  opacity: 1;
+  pointer-events: all;
+}
+
+.control-group .control-header-container .control-header-label {
+  height: 40px;
+  font-size: 1.2rem;
+  font-weight: 300;
+  line-height: 40px;
+  text-transform: uppercase;
+  cursor: default;
+  transition: margin 0.2s ease-in-out;
+}
+
+.control-group .control-header-container .control-header-icon {
+  height: 40px;
+  font-size: 1.4rem;
+  line-height: 40px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.control-group .control-header-container .control-header-icon {
+  display: inline-block;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease-in-out;
+}
+
+
+/* Faction switch */
+.control-group .faction-switch {
+  height: 42px;
+  width: 120px;
+  margin: 0 auto;
+  font-weight: 700;
+  border-radius: 1px;
+  border-style: solid;
+  background-color: transparent!important;
+  overflow: hidden;
+  cursor: pointer;
+  transition: border 0.2s ease-in-out;
+}
+
+.control-group .faction-switch .faction-switch-elements {
+  display: flex;
+  height: 40px;
+  width: 240px;
+  white-space: nowrap;
+  transform: translateX(-4px);
+  transition: transform 0.2s ease-in-out;
+}
+
+.control-group .faction-switch .faction-switch-elements.move-left {
+  transform: translateX(-120px);
+}
+
+.control-group .faction-switch .faction-switch-elements .switch-half {
+  height: 100%;
+  width: 105px;
+  line-height: 40px;
+  box-shadow: inset 0px 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+.control-group .faction-switch .faction-switch-elements .switch-handle {
+  height: 100%;
+  width: 30px;
+  line-height: 40px;
+  border-width: 0 1px;
+  border-style: solid;
+  border-color: rgb(205, 205, 205);
+  background-color: white;
+}
+
+.control-group .faction-switch .faction-switch-elements .switch-handle:hover {
+  background-color: rgb(220, 220, 220);
+}
+
+
+/* Filter toggle */
+.control-group .filter-toggle {
+  height: 40px;
+  width: 120px;
+  margin: 0 auto;
+  font-size: 1.2rem;
+  line-height: 40px;
+  text-align: center;
+  text-shadow: 0px 1px 1px black, 0px 0px 3px rgb(19, 20, 24);
+  border-left: 2px solid transparent;
+  border-right: 2px solid transparent;
+  opacity: 0.7;
+  cursor: pointer;
+  transition: opacity 0.1s ease-in-out;
+}
+
+.side-container.left .filter-toggle:hover {
+  border-right: 2px solid;
+}
+
+.side-container.right .filter-toggle:hover {
+  border-left: 2px solid;
+}
+
+.control-group .filter-toggle:active {
+  opacity: 1;
+}
+
+.side-container.left .filter-toggle.highlight {
+  border-right: 2px solid;
+  opacity: 1;
+}
+
+.side-container.right .filter-toggle.highlight {
+  border-left: 2px solid;
+  opacity: 1;
+}
+
+/* Faction switch colors */
+.radiant{ border-color: rgb(61, 182, 64); background-color: rgb(61, 182, 64); }
+.radiant:active{ border-color: rgb(39, 167, 42); background-color: rgb(39, 167, 42); }
+.dire{ border-color: rgb(204, 53, 44); background-color: rgb(204, 53, 44); }
+.dire:active{ border-color: rgb(182, 34, 26); background-color: rgb(182, 34, 26); }
+
+
+/* Filter toggle colors */
+
+/* Wards */
+.runes { color: rgb(255, 121, 121);}
+.offense { color: rgb(255, 174, 115); }
+.defense { color: rgb(217, 255, 102); }
+.push { color: rgb(148, 239, 255)}
+.utility { color: rgb(158, 148, 255); }
+
+/* Truesight */
+.sentry { color: rgb(75, 145, 231); }
+.tower { color: rgb(205, 63, 86); }
+
+/* Camps */
+.box { color: rgb(29, 205, 76); }
+.pull { color: rgb(252, 204, 255); }
+.stack { color: rgb(221, 206, 101); }

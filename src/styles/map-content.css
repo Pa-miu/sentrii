@@ -1,0 +1,20 @@
+.map-content-container {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.side-container {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.pixi-container {
+  height: 640px;
+}
+
+img.minimap {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
