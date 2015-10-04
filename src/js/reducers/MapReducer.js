@@ -4,17 +4,17 @@ import { SWITCH_FACTION, TOGGLE_FILTER, TOGGLE_GROUP } from '../constants/MapCon
 const update = React.addons.update;
 
 const initialState = {
-  isRadiant: true,          // Expressed as 'radiant' or 'dire' in the UI
-  campFilters: {            // Filters for camps
+  isRadiant: true,    // Expressed as 'radiant' or 'dire' in the UI
+  camps: {            // Filters for camps
     box: false,
     pull: false,
     stack: false
   },
-  truesightFilters: {        // Filters for truesight
+  truesight: {        // Filters for truesight
     sentry: false,
     tower: false
   },
-  wardFilters: {            // Filters for wards
+  wards: {            // Filters for wards
     runes: false,
     offense: false,
     defense: false,

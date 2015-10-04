@@ -123,6 +123,16 @@
   opacity: 1;
 }
 
+.side-container.left .filter-toggle.highlight {
+  border-right: 2px solid;
+  opacity: 1;
+}
+
+.side-container.right .filter-toggle.highlight {
+  border-left: 2px solid;
+  opacity: 1;
+}
+
 /* Faction switch colors */
 .radiant{ border-color: rgb(61, 182, 64); background-color: rgb(61, 182, 64); }
 .radiant:active{ border-color: rgb(39, 167, 42); background-color: rgb(39, 167, 42); }

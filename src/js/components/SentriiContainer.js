@@ -12,18 +12,8 @@ import Footer from './Footer';
 class SentriiContainer extends Component {
   constructor() {
     super();
-    this.printState = this.printState.bind(this);
     this.configFilters = this.configFilters.bind(this);
     this.configFaction = this.configFaction.bind(this);
-  }
-
-  printState() {
-    console.log('Is Radiant');
-    console.log(this.props.isRadiant);
-    console.log('Ward Filters');
-    console.log(this.props.wardFilters);
-    console.log('Camp Filters');
-    console.log(this.props.campFilters);
   }
 
   configFilters(label, filters) {
@@ -35,16 +25,16 @@ class SentriiContainer extends Component {
   }
 
   render() {
-    const { dispatch, isRadiant, campFilters, truesightFilters, wardFilters } = this.props;
+    const { dispatch, isRadiant, camps, truesight, wards } = this.props;
     const actions = bindActionCreators(MapActions, dispatch);
 
     const leftControls = [
-      this.configFilters('wards', wardFilters),
-      this.configFilters('truesight', truesightFilters)
+      this.configFilters('wards', wards),
+      this.configFilters('truesight', truesight)
     ];
     const rightControls = [
       this.configFaction('faction', 'radiant', 'dire', isRadiant),
-      this.configFilters('camps', campFilters)
+      this.configFilters('camps', camps)
     ];
 
     return (
@@ -62,19 +52,19 @@ class SentriiContainer extends Component {
 }
 
 SentriiContainer.propTypes = {
-  campFilters: PropTypes.object.isRequired,
+  camps: PropTypes.object.isRequired,
   dispatch: PropTypes.func.isRequired,
   isRadiant: PropTypes.bool.isRequired,
-  truesightFilters: PropTypes.object.isRequired,
-  wardFilters: PropTypes.object.isRequired
+  truesight: PropTypes.object.isRequired,
+  wards: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {
   return {
     isRadiant: state.isRadiant,
-    campFilters: state.campFilters,
-    truesightFilters: state.truesightFilters,
-    wardFilters: state.wardFilters
+    camps: state.camps,
+    truesight: state.truesight,
+    wards: state.wards
   };
 }
 

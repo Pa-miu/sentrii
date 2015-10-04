@@ -26,11 +26,23 @@ export default class MapContent extends Component {
   generateFilterGroup(configObject) {
     const filters = [];
     for (const key in configObject.filters) {
-      filters.push(<FilterToggle key={key} label={key}/>);
+      filters.push(
+        <FilterToggle
+          key={key}
+          label={key}
+          group={configObject.label}
+          isActive={configObject.filters[key]}
+          toggleFilter={this.props.actions.toggleFilter}
+        />
+      );
     }
     return (
       <div key={configObject.label} className='control-group'>
-        <ControlLabel label={configObject.label} canToggleGroup toggleGroup={this.props.actions.toggleGroup}/>
+        <ControlLabel
+          label={configObject.label}
+          toggleGroup={this.props.actions.toggleGroup}
+          canToggleGroup
+        />
         {filters}
       </div>
     );
