@@ -30,7 +30,7 @@ export default class MapContent extends Component {
     }
     return (
       <div key={configObject.label} className='control-group'>
-        <ControlLabel label={configObject.label} canToggleGroup/>
+        <ControlLabel label={configObject.label} canToggleGroup toggleGroup={this.props.actions.toggleGroup}/>
         {filters}
       </div>
     );

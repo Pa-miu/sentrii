@@ -3,7 +3,6 @@ import React, { Component, PropTypes } from 'react';
 export default class FactionSwitch extends Component {
   constructor() {
     super();
-
     this.handleSwitch = this.handleSwitch.bind(this);
   }
 
