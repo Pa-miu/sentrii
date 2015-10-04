@@ -2,7 +2,7 @@ import { React, sinon, assert, expect, TestUtils } from '../test_exports';
 import Header from '../../src/js/components/Header';
 
 describe('Header component', () => {
-  let sandbox, header, container, titleGroup, title, subtitle, navbar, navItems;
+  let header, container, titleGroup, title, subtitle, navbar, navItems;
   let findDOMWithClass = TestUtils.findRenderedDOMComponentWithClass;
   let scryDOMWithClass = TestUtils.scryRenderedDOMComponentsWithClass;
 
