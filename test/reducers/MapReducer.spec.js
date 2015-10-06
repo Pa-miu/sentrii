@@ -4,7 +4,7 @@ import { SWITCH_FACTION, TOGGLE_FILTER, TOGGLE_GROUP } from '../../src/js/consta
 
 const initialState = {
   isRadiant: true,
-  camp: {
+  camps: {
     box: false,
     pull: false,
     stack: false
@@ -13,7 +13,7 @@ const initialState = {
     sentry: false,
     tower: false
   },
-  ward: {
+  wards: {
     runes: false,
     offense: false,
     defense: false,
@@ -40,19 +40,19 @@ describe('MapReducer', () => {
     let dummyAction = {
       type: TOGGLE_FILTER,
       payload: {
-        group: 'ward',
+        group: 'wards',
         filter: 'runes'
       }
     }
     let resultState = reducer(undefined, dummyAction);
-    expect(resultState.ward.runes).to.eql(true);
+    expect(resultState.wards.runes).to.eql(true);
   });
 
   it('should handle TOGGLE_GROUP', () => {
     let dummyAction = {
       type: TOGGLE_GROUP,
       payload: {
-        group: 'ward',
+        group: 'wards',
         on: true
       }
     }
@@ -64,6 +64,6 @@ describe('MapReducer', () => {
       utility: true
     }
     let resultState = reducer(undefined, dummyAction);
-    expect(resultState.ward).to.eql(expectedResult);
+    expect(resultState.wards).to.eql(expectedResult);
   });
 });
