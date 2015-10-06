@@ -130,7 +130,21 @@ gulp.task('buildImages', () => {
       .pipe(gulp.dest(path.DEST_PROD + path.APPEND_IMAGES));
 });
 
+/**
+ * Localhost server. Will open the app automatically at http://127.0.0.1:8080/
+ */
+
+const exec = require('child_process').exec;
+gulp.task('start', (cb) => {
+  // Using https://www.npmjs.com/package/http-server
+  exec("http-server dev -o", (err, stdout, stderr) => {
+    console.log(stdout);
+    console.log(stderr);
+    cb(err);
+  });
+});
+
 /* Composited Tasks */
-gulp.task('default', ['dev', 'refresh', 'watch']);
+gulp.task('default', ['dev', 'refresh', 'watch', 'start']);
 gulp.task('dev', ['bundleJS', 'copyHTML', 'copyCSS', 'copyImages']);
 gulp.task('prod', ['buildHTML', 'buildCSS', 'buildImages', 'build']);
