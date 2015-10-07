@@ -3,6 +3,7 @@ import { FILTER_GROUP, FACTION_GROUP } from '../constants/MapConstants';
 import ControlLabel from './ControlLabel';
 import FilterToggle from './FilterToggle';
 import FactionSwitch from './FactionSwitch';
+import PIXI from 'pixi.js';
 
 export default class MapContent extends Component {
   constructor() {
@@ -10,6 +11,14 @@ export default class MapContent extends Component {
     this.generateControls = this.generateControls.bind(this);
     this.generateFilterGroup = this.generateFilterGroup.bind(this);
     this.generateFactionGroup = this.generateFactionGroup.bind(this);
+  }
+
+  componentDidMount() {
+    const renderer = PIXI.autoDetectRenderer(680, 640);
+    const container = React.findDOMNode(this.refs.pixiContainer);
+    container.appendChild(renderer.view);
+    const stage = new PIXI.Container();
+    renderer.render(stage);
   }
 
   generateControls(configObject) {
@@ -70,9 +79,7 @@ export default class MapContent extends Component {
         <div className='side-container left col-1-6 no-select'>
           {leftControls}
         </div>
-        <div className='pixi-container col-4-6 no-select'>
-          <img className='minimap' src='./images/minimap683-transparent2.png' alt='minimap 6.83'/>
-        </div>
+        <div className='pixi-container col-4-6 no-select' ref='pixiContainer'/>
         <div className='side-container right col-1-6 no-select'>
           {rightControls}
         </div>
