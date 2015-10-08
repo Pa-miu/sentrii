@@ -4,6 +4,7 @@ import ControlLabel from './ControlLabel';
 import FilterToggle from './FilterToggle';
 import FactionSwitch from './FactionSwitch';
 import PIXI from 'pixi.js';
+import PixiManager from '../pixi/PixiManager';
 
 export default class MapContent extends Component {
   constructor() {
@@ -14,36 +15,8 @@ export default class MapContent extends Component {
   }
 
   componentDidMount() {
-    const stage = new PIXI.Container();
-    const renderer = PIXI.autoDetectRenderer(680, 680, {antialias: true, transparent: true});
-    const container = React.findDOMNode(this.refs.pixiContainer);
-    container.appendChild(renderer.view);
-
-    PIXI.loader
-      .add("images/minimap683.png")
-      .load(() => {
-      const bgSprite = new PIXI.Sprite(PIXI.loader.resources['images/minimap683.png'].texture);
-      bgSprite.scale.set(0.66, 0.66);
-      stage.addChild(bgSprite);
-
-      let wardSpot = new PIXI.Graphics();
-      wardSpot.lineStyle(1, 0x000000, 1)
-      wardSpot.beginFill(0xff7979);
-      wardSpot.drawCircle(0, 0, 4);
-      wardSpot.endFill();
-      wardSpot.interactive = true;
-      wardSpot.buttonMode = true;
-      wardSpot.position.x = 449;
-      wardSpot.position.y = 440;
-      wardSpot.click = (event) => {
-        console.log('Clicked');
-        event.target.x +=10;
-        renderer.render(stage);
-      };
-      stage.addChild(wardSpot);
-
-      renderer.render(stage);
-    });
+    const domTarget = React.findDOMNode(this.refs.pixiContainer);
+    const pixi = new PixiManager(680, 680, domTarget);
   }
 
   generateControls(configObject) {
