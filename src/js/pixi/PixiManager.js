@@ -4,6 +4,9 @@ import MapNode from './MapNode';
 let instance = null;
 let stage, renderer;
 
+/*
+  PixiManager is a bridge between MapContent and all Pixi-related operations and entities
+*/
 export default class PixiManager {
   constructor(width, height, domTarget) {
     if (!instance) {
@@ -30,7 +33,7 @@ export default class PixiManager {
     let wardSpot = new PIXI.Graphics();
     wardSpot.lineStyle(1, 0x000000, 1)
     wardSpot.beginFill(0xff7979);
-    wardSpot.drawCircle(0, 0, 4);
+    wardSpot.drawCircle(0, 0, 5);
     wardSpot.endFill();
     wardSpot.interactive = true;
     wardSpot.buttonMode = true;
@@ -40,7 +43,7 @@ export default class PixiManager {
       console.log('Clicked');
     };
     stage.addChild(wardSpot);
-    this.update();
+    requestAnimationFrame(this.update);
   }
 
   update() {

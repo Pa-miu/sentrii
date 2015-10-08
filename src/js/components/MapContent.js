@@ -3,7 +3,6 @@ import { FILTER_GROUP, FACTION_GROUP } from '../constants/MapConstants';
 import ControlLabel from './ControlLabel';
 import FilterToggle from './FilterToggle';
 import FactionSwitch from './FactionSwitch';
-import PIXI from 'pixi.js';
 import PixiManager from '../pixi/PixiManager';
 
 export default class MapContent extends Component {
