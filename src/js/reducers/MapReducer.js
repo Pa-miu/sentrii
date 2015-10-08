@@ -1,7 +1,6 @@
-import React from 'react/addons';
+import React from 'react';
+import update from 'react-addons-update';
 import { SWITCH_FACTION, TOGGLE_FILTER, TOGGLE_GROUP } from '../constants/MapConstants';
-
-const update = React.addons.update;
 
 const initialState = {
   isRadiant: true,    // Expressed as 'radiant' or 'dire' in the UI

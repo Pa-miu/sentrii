@@ -40,7 +40,10 @@
   },
   "dependencies": {
     "object-assign": "^4.0.1",
-    "react": "^0.13.3",
+    "react": "^0.14.0",
+    "react-addons-test-utils": "^0.14.0",
+    "react-addons-update": "^0.14.0",
+    "react-dom": "^0.14.0",
     "react-redux": "^3.0.0",
     "redux": "^3.0.2"
   }
