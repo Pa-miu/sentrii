@@ -14,7 +14,7 @@ export default class MapContent extends Component {
   }
 
   componentDidMount() {
-    const domTarget = React.findDOMNode(this.refs.pixiContainer);
+    const domTarget = this.refs.pixiContainer;
     const pixi = new PixiManager(680, 680, domTarget);
   }
 
