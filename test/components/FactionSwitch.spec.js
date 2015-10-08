@@ -34,6 +34,10 @@ describe('FactionSwitch component', () => {
     expect(switchHandle).to.not.equal(null);
   });
 
+  /*
+    React 0.14 freezes props so faction.props can no longer be stubbed directly.
+    Test needs to be revamped.
+  */
   it('should call switchFaction when clicked', () => {
     let switchActionStub = sandbox.stub(faction.props, "switchFaction");
     TestUtils.Simulate.click(container);
