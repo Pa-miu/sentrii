@@ -30,9 +30,9 @@ export default class MapContent extends Component {
   }
 
   generateFilterGroup(configObject) {
-    const filters = [];
+    const filterArray = [];
     for (const key in configObject.filters) {
-      filters.push(
+      filterArray.push(
         <FilterToggle
           key={key}
           label={key}
@@ -49,7 +49,7 @@ export default class MapContent extends Component {
           toggleGroup={this.props.actions.toggleGroup}
           canToggleGroup
         />
-        {filters}
+        {filterArray}
       </div>
     );
   }
@@ -91,6 +91,7 @@ MapContent.propTypes = {
     toggleFilter: PropTypes.func.isRequired,
     toggleGroup: PropTypes.func.isRequired
   }),
+  filters: PropTypes.array,
   leftControls: PropTypes.array,
   rightControls: PropTypes.array
 };

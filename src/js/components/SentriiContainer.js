@@ -27,6 +27,7 @@ configFilters(label, filters) {
   render() {
     const { dispatch, isRadiant, camps, truesight, wards } = this.props;
     const actions = bindActionCreators(MapActions, dispatch);
+    const filters = [wards, truesight, camps];
 
     const leftControls = [
       this.configFilters('wards', wards),
@@ -42,6 +43,7 @@ configFilters(label, filters) {
         <Header/>
         <MapContent
           actions={actions}
+          filters={filters}
           leftControls={leftControls}
           rightControls={rightControls}
         />
