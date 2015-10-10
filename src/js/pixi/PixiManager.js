@@ -68,13 +68,13 @@ const containerMap = {};
   PixiManager is a bridge between MapContent and all Pixi-related operations and entities
 */
 export default class PixiManager {
-  constructor(width, height, domTarget) {
+  constructor(width, height, domTarget, faction, filters) {
     if (!instance) {
       instance = this;
       stage = new PIXI.Container();
       renderer = PIXI.autoDetectRenderer(width, height, { antialias: true, transparent: true });
       domTarget.appendChild(renderer.view);
-      this.loadResources(this.initialize.bind(this));
+      this.loadResources(this.initialize.bind(this, faction, filters));
     }
     return instance;
   }
@@ -85,12 +85,12 @@ export default class PixiManager {
       .load(onComplete);
   }
 
-  initialize() {
+  initialize(faction, filters) {
     const bgSprite = new PIXI.Sprite(PIXI.loader.resources['images/minimap683.png'].texture);
     stage.addChild(bgSprite);
-    this.readConfig(configObject);
-
     stage.scale.set(0.66, 0.66);
+    this.readConfig(configObject);
+    this.recieveFilters(faction, filters);
     this.update();
   }
 
@@ -156,7 +156,7 @@ export default class PixiManager {
     return container;
   }
 
-  recieveFilters(filters, faction) {
+  recieveFilters(faction, filters) {
     for (const groupKey in containerMap) {
       for (const filterKey in containerMap[groupKey]) {
         for (const factionKey in containerMap[groupKey][filterKey]) {

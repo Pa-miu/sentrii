@@ -16,12 +16,11 @@ export default class MapContent extends Component {
   }
 
   componentDidMount() {
-    const domTarget = this.refs.pixiContainer;
-    pixi = new PixiManager(680, 680, domTarget);
+    pixi = new PixiManager(680, 680, this.refs.pixiContainer, this.props.faction, this.props.filters);
   }
 
   componentDidUpdate() {
-    pixi.recieveFilters(this.props.filters, this.props.faction);
+    pixi.recieveFilters(this.props.faction, this.props.filters);
     pixi.update();
   }
 
