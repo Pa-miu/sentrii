@@ -20,12 +20,12 @@ class SentriiContainer extends Component {
     return { type: FILTER_GROUP, label, filters };
   }
 
-  configFaction(label, ontext, offtext, isRadiant) {
-    return { type: FACTION_GROUP, label, ontext, offtext, isRadiant };
+  configFaction(label, ontext, offtext, faction) {
+    return { type: FACTION_GROUP, label, ontext, offtext, faction };
   }
 
   render() {
-    const { dispatch, isRadiant, camps, truesight, wards } = this.props;
+    const { dispatch, faction, camps, truesight, wards } = this.props;
     const actions = bindActionCreators(MapActions, dispatch);
     const filters = { wards, truesight, camps };
 
@@ -34,7 +34,7 @@ class SentriiContainer extends Component {
       this.configFilters('truesight', truesight)
     ];
     const rightControls = [
-      this.configFaction('faction', 'radiant', 'dire', isRadiant),
+      this.configFaction('faction', 'radiant', 'dire', faction),
       this.configFilters('camps', camps)
     ];
 
@@ -43,6 +43,7 @@ class SentriiContainer extends Component {
         <Header/>
         <MapContent
           actions={actions}
+          faction={faction}
           filters={filters}
           leftControls={leftControls}
           rightControls={rightControls}
@@ -56,14 +57,14 @@ class SentriiContainer extends Component {
 SentriiContainer.propTypes = {
   camps: PropTypes.object.isRequired,
   dispatch: PropTypes.func.isRequired,
-  isRadiant: PropTypes.bool.isRequired,
+  faction: PropTypes.string.isRequired,
   truesight: PropTypes.object.isRequired,
   wards: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {
   return {
-    isRadiant: state.isRadiant,
+    faction: state.faction,
     camps: state.camps,
     truesight: state.truesight,
     wards: state.wards

@@ -21,7 +21,7 @@ export default class MapContent extends Component {
   }
 
   componentDidUpdate() {
-    pixi.recieveFilters(this.props.filters, null);
+    pixi.recieveFilters(this.props.filters, this.props.faction);
     pixi.update();
   }
 
@@ -67,7 +67,7 @@ export default class MapContent extends Component {
         <ControlLabel label={configObject.label}/>
         <FactionSwitch
           switchFaction={this.props.actions.switchFaction}
-          isRadiant={configObject.isRadiant}
+          faction={configObject.faction}
           ontext={configObject.ontext}
           offtext={configObject.offtext}
         />
@@ -98,6 +98,7 @@ MapContent.propTypes = {
     toggleFilter: PropTypes.func.isRequired,
     toggleGroup: PropTypes.func.isRequired
   }),
+  faction: PropTypes.string.isRequired,
   filters: PropTypes.object.isRequired,
   leftControls: PropTypes.array,
   rightControls: PropTypes.array

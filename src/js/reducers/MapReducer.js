@@ -1,8 +1,8 @@
 import update from 'react-addons-update';
-import { SWITCH_FACTION, TOGGLE_FILTER, TOGGLE_GROUP } from '../constants/MapConstants';
+import { RADIANT, DIRE, SWITCH_FACTION, TOGGLE_FILTER, TOGGLE_GROUP } from '../constants/MapConstants';
 
 const initialState = {
-  isRadiant: true,    // Expressed as 'radiant' or 'dire' in the UI
+  faction: RADIANT,      // Expressed as 'radiant' or 'dire' in the UI
   camps: {            // Filters for camps
     box: false,
     pull: false,
@@ -24,7 +24,7 @@ const initialState = {
 const switchFactionHelper = function switchFactionHelper(state) {
   return {
     ...state,
-    isRadiant: !state.isRadiant
+    faction: (state.faction === RADIANT ? DIRE : RADIANT)
   };
 };
 
