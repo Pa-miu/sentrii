@@ -16,7 +16,7 @@ class SentriiContainer extends Component {
     this.configFaction = this.configFaction.bind(this);
   }
 
-configFilters(label, filters) {
+  configFilters(label, filters) {
     return { type: FILTER_GROUP, label, filters };
   }
 
@@ -27,7 +27,7 @@ configFilters(label, filters) {
   render() {
     const { dispatch, isRadiant, camps, truesight, wards } = this.props;
     const actions = bindActionCreators(MapActions, dispatch);
-    const filters = [wards, truesight, camps];
+    const filters = { wards, truesight, camps };
 
     const leftControls = [
       this.configFilters('wards', wards),

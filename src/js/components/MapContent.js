@@ -91,7 +91,7 @@ MapContent.propTypes = {
     toggleFilter: PropTypes.func.isRequired,
     toggleGroup: PropTypes.func.isRequired
   }),
-  filters: PropTypes.array,
+  filters: PropTypes.object.isRequired,
   leftControls: PropTypes.array,
   rightControls: PropTypes.array
 };
