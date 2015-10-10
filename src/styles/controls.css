@@ -134,26 +134,26 @@
 }
 
 /* Faction switch colors */
-.radiant{ border-color: rgb(61, 182, 64); background-color: rgb(61, 182, 64); }
-.radiant:active{ border-color: rgb(39, 167, 42); background-color: rgb(39, 167, 42); }
-.dire{ border-color: rgb(204, 53, 44); background-color: rgb(204, 53, 44); }
-.dire:active{ border-color: rgb(182, 34, 26); background-color: rgb(182, 34, 26); }
+.radiant{ border-color: #3db640; background-color: #3db640; }
+.radiant:active{ border-color: #27a72a; background-color: #27a72a; }
+.dire{ border-color: #cc352c; background-color: #cc352c; }
+.dire:active{ border-color: #b6221a; background-color: #b6221a; }
 
 
 /* Filter toggle colors */
 
 /* Wards */
-.runes { color: rgb(255, 121, 121);}
-.offense { color: rgb(255, 174, 115); }
-.defense { color: rgb(217, 255, 102); }
-.push { color: rgb(148, 239, 255)}
-.utility { color: rgb(158, 148, 255); }
+.runes { color: #ff7979;}
+.offense { color: #ffae73; }
+.defense { color: #d9ff66; }
+.push { color: #94efff}
+.utility { color: #9e94ff; }
 
 /* Truesight */
-.sentry { color: rgb(75, 145, 231); }
-.tower { color: rgb(205, 63, 86); }
+.sentry { color: #4b91e7; }
+.tower { color: #cd3f56; }
 
 /* Camps */
-.box { color: rgb(29, 205, 76); }
-.pull { color: rgb(252, 204, 255); }
-.stack { color: rgb(221, 206, 101); }
+.box { color: #1dcd4c; }
+.pull { color: #fcccff; }
+.stack { color: #ddce64; }
