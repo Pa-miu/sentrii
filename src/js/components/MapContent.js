@@ -5,6 +5,8 @@ import FilterToggle from './FilterToggle';
 import FactionSwitch from './FactionSwitch';
 import PixiManager from '../pixi/PixiManager';
 
+let pixi;   // The singleton pixi object that renders the canvas
+
 export default class MapContent extends Component {
   constructor() {
     super();
@@ -15,7 +17,12 @@ export default class MapContent extends Component {
 
   componentDidMount() {
     const domTarget = this.refs.pixiContainer;
-    const pixi = new PixiManager(680, 680, domTarget);
+    pixi = new PixiManager(680, 680, domTarget);
+  }
+
+  componentDidUpdate() {
+    pixi.recieveFilters(this.props.filters, null);
+    pixi.update();
   }
 
   generateControls(configObject) {

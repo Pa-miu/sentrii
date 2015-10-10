@@ -5,6 +5,7 @@ const Graphics = PIXI.Graphics;
 export default class MapNode extends Graphics {
   constructor(id, x, y, color, onClick) {
     super();
+    this.id = id;
     this.x = x;
     this.y = y;
     this.draw(color);
