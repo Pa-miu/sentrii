@@ -12,7 +12,7 @@ export function switchFaction() {
 
 /*
   Associated wtih the FilterToggle component
-  Changes whether a category of entities (rune wards, push wards, etc) should be shown
+  Changes whether a category of nodes (rune wards, push wards, etc) should be shown
 */
 export function toggleFilter(group, filter) {
   return {
