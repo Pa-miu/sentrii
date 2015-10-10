@@ -6,3 +6,8 @@ export const TOGGLE_GROUP = 'TOGGLE_GROUP';
 // Component type constants
 export const FILTER_GROUP = 'FILTER_GROUP';
 export const FACTION_GROUP = 'FACTION_GROUP';
+
+// Faction names
+export const RADIANT = 'RADIANT';
+export const DIRE = 'DIRE';
+export const NEUTRAL = 'NEUTRAL';
