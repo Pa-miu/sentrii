@@ -1,4 +1,3 @@
-import React from 'react';
 import update from 'react-addons-update';
 import { SWITCH_FACTION, TOGGLE_FILTER, TOGGLE_GROUP } from '../constants/MapConstants';
 
