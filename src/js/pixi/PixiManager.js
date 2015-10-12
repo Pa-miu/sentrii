@@ -1,52 +1,14 @@
 import PIXI from 'pixi.js';
-import MapNode from './MapNode';
-import { NEUTRAL } from '../constants/MapConstants';
+import { NodeConfig } from './NodeConfig';
+import { WardNode, BoxNode, TowerNode } from './MapNodes';
+import { NEUTRAL, WARD, BOX, TOWER, SENTRY, PULL } from '../constants/MapConstants';
 
 let instance = null;
 let stage;
 let renderer;
 
-const configObject = {
-  wards: {
-    runes: {
-      NEUTRAL: {
-        color: 0xff7979,
-        points: [
-          { id: 'R1', x: 294, y: 376 },
-          { id: 'R2', x: 379, y: 339 },
-          { id: 'R3', x: 380, y: 481 },
-          { id: 'R4', x: 403, y: 466 },
-          { id: 'R5', x: 448, y: 431 },
-          { id: 'R6', x: 625, y: 686 },
-          { id: 'R7', x: 660, y: 590 },
-          { id: 'R8', x: 679, y: 665 },
-          { id: 'R9', x: 718, y: 698 },
-          { id: 'R10', x: 750, y: 650 },
-          { id: 'R11', x: 772, y: 708 }
-        ]
-      }
-    },
-    offense: {
-      RADIANT: {
-        color: 0xffae73,
-        points: [
-          { id: 'O1-r', x: 197, y: 243 },
-          { id: 'O2-r', x: 253, y: 249 },
-          { id: 'O3-r', x: 301, y: 201 },
-          { id: 'O4-r', x: 307, y: 147 },
-          { id: 'O5-r', x: 449, y: 246 },
-          { id: 'O6-r', x: 488, y: 455 },
-          { id: 'O7-r', x: 510, y: 306 },
-          { id: 'O8-r', x: 566, y: 542 },
-          { id: 'O9-r', x: 583, y: 205 },
-          { id: 'O10-r', x: 716, y: 534 },
-          { id: 'O11-r', x: 747, y: 477 },
-          { id: 'O12-r', x: 792, y: 589 },
-          { id: 'O13-r', x: 906, y: 689 }
-        ]
-      }
-    }
-  }
+const handleClick = (event) => {
+  console.log(event.target.id + ' ' + event.target.x + ' ' + event.target.y);
 };
 
 /*
@@ -89,7 +51,7 @@ export default class PixiManager {
     const bgSprite = new PIXI.Sprite(PIXI.loader.resources['images/minimap683.png'].texture);
     stage.addChild(bgSprite);
     stage.scale.set(0.66, 0.66);
-    this.readConfig(configObject);
+    this.readConfig(NodeConfig);
     this.recieveFilters(faction, filters);
     this.update();
   }
