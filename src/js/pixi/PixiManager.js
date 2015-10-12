@@ -17,7 +17,7 @@ const handleClick = (event) => {
 {
   <groupName>: {          // 'wards', 'camps', etc
     <filterName>: {       // 'runes', 'offense', etc
-      neutral: [MapNode, MapNode, MapNode, ...],
+      neutral: [WardNode, WardNode, WardNode, ...],
       radiant: [...etc],
       dire: [...etc]
     }
@@ -102,20 +102,47 @@ export default class PixiManager {
     Filters are a category of nodes on the map identified by their color
   */
   readFaction(factionFilter) {
-    const color = factionFilter.color;
-    const onClick = (event) => {
-      console.log(event.target.id + ' ' + event.target.x + ' ' + event.target.y);
-    };
+    const attributes = factionFilter.attributes;
+    const type = factionFilter.type;
 
-    const container = new PIXI.Container();     // Create an empty array for every node
+    // Create a container for the nodes
+    const container = new PIXI.Container();
+
     // Iterate through the filter points
     for (let i = 0; i < factionFilter.points.length; i++) {
       const point = factionFilter.points[i];
       // Create a new node out of the points configuration
-      const node = new MapNode(point.id, point.x, point.y, color, onClick);
-      container.addChild(node);             // Add the new node to the container
+      const node = this.selectConstructor(type, attributes, point);
+      // Add the new node to the container
+      if (node) {
+        container.addChild(node);
+      }
     }
     return container;
+  }
+
+  selectConstructor(type, attributes, point) {
+    let newNode = null;
+    switch(type) {
+      case WARD:
+        newNode = new WardNode(attributes.color,
+                               point.id, point.x, point.y, handleClick);
+        break;
+      case BOX:
+        newNode = new BoxNode(attributes.alpha,
+                              attributes.color,
+                              attributes.outlineColor,
+                              point.verts, point.id, point.x, point.y, handleClick);
+        break;
+      case TOWER:
+        newNode = new TowerNode(attributes.towerColor,
+                                attributes.detectionColor,
+                                attributes.alpha,
+                                attributes.range,
+                                point.id, point.x, point.y, handleClick);
+        break;
+    }
+    return newNode;
   }
 
   recieveFilters(faction, filters) {
