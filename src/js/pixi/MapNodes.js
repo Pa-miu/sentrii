@@ -85,5 +85,39 @@ export class SentryNode extends MapNode {
   Extends MapNode.js to show pull direction.
 */
 export class PullNode extends MapNode {
+  constructor(alpha, color, rotation, times, textx, texty, ...base) {
+    super(...base);
+    this.draw(alpha, color, rotation, times, textx, texty);
+  }
 
+  draw(alpha, color, rotation, times, textx, texty) {
+    const arrowVerts = [
+      0, 3,
+      25, 3,
+      25, 8,
+      35, 0,
+      25, -8,
+      25, -3,
+      0, -3
+    ];
+    const arrowGraphic = new PIXI.Graphics();
+    arrowGraphic.lineStyle(2, color, 1);
+    arrowGraphic.beginFill(color, alpha);
+    arrowGraphic.drawPolygon(arrowVerts);
+    arrowGraphic.endFill();
+    arrowGraphic.rotation = rotation;
+    this.addChild(arrowGraphic);
+
+    const timesText = new PIXI.Text('0', { font: '20px Arial', fill: 0xffffff, stroke: color, strokeThickness: 3 });
+    timesText.x = textx;
+    timesText.y = texty;
+    timesText.anchor.x = 0.5;
+    let timesString = '';
+    for (let i = 0; i < times.length; ++i) {
+      timesString = timesString + '0:' + times[i] + '\n';
+    }
+    timesText.text = timesString;
+
+    this.addChild(timesText);
+  }
 }

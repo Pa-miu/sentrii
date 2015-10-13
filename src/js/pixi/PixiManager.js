@@ -1,11 +1,14 @@
 import PIXI from 'pixi.js';
 import { NodeConfig } from './NodeConfig';
-import { WardNode, BoxNode, TowerNode } from './MapNodes';
-import { NEUTRAL, WARD, BOX, TOWER, SENTRY, PULL } from '../constants/MapConstants';
+import { WardNode, BoxNode, TowerNode, PullNode } from './MapNodes';
+import { NEUTRAL, WARD, BOX, TOWER, STACK } from '../constants/MapConstants';
 
-let instance = null;
-let stage;
-let renderer;
+let instance = null;  // Singleton instance reference
+let stage = null;     // Root PIXI.Container object
+let renderer = null;  // Main renderer
+let coords = null;    // Coordinate PIXI.Text reference
+
+const pixiScale = 0.66; // Default zoom of the stage
 
 const handleClick = (event) => {
   console.log(event.target.id + ' ' + event.target.x + ' ' + event.target.y);
@@ -48,12 +51,32 @@ export default class PixiManager {
   }
 
   initialize(faction, filters) {
-    const bgSprite = new PIXI.Sprite(PIXI.loader.resources['images/minimap683.png'].texture);
-    stage.addChild(bgSprite);
-    stage.scale.set(0.66, 0.66);
+    stage.scale.set(pixiScale, pixiScale);
+    stage.interactive = true;
+    this.drawBG();
+    this.drawCoords();
     this.readConfig(NodeConfig);
     this.recieveFilters(faction, filters);
     this.update();
+  }
+
+  drawBG() {
+    const bgSprite = new PIXI.Sprite(PIXI.loader.resources['images/minimap683.png'].texture);
+    stage.addChild(bgSprite);
+  }
+
+  drawCoords() {
+    coords = new PIXI.Text('(0, 0)', { font: '20px Arial', fill: 0xffffff });
+    const clamp = (min, max, num) => {
+      return Math.max(min, Math.min(num, max));
+    };
+
+    stage.on('mousemove', (e) => {
+      const x = clamp(0, 1000, Math.round(e.data.global.x / pixiScale));
+      const y = clamp(0, 1000, Math.round(e.data.global.y / pixiScale));
+      coords.text = '(' + x + ', ' + y + ')';
+    });
+    stage.addChild(coords);
   }
 
   /*
@@ -141,6 +164,12 @@ export default class PixiManager {
                                 attributes.range,
                                 point.id, point.x, point.y, handleClick);
         break;
+      case STACK:
+        newNode = new PullNode(attributes.alpha,
+                               attributes.color,
+                               point.rotation, point.times, point.textx, point.texty, 
+                               point.id, point.x, point.y, handleClick);
+        break;
     }
     return newNode;
   }
@@ -163,5 +192,6 @@ export default class PixiManager {
 
   update() {
     renderer.render(stage);
+    requestAnimationFrame(this.update.bind(this));
   }
 }

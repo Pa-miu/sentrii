@@ -1,4 +1,4 @@
-import { WARD, BOX, TOWER, SENTRY, PULL } from '../constants/MapConstants';
+import { WARD, BOX, TOWER, STACK } from '../constants/MapConstants';
 
 export const NodeConfig = {
   wards: {
@@ -52,7 +52,7 @@ export const NodeConfig = {
       neutral: {
         type: TOWER,
         attributes: {
-          towerColor: 0x0cd3f56,
+          towerColor: 0xe9e95d,
           detectionColor: 0x4b91e7,
           alpha: 0.4,
           range: 55
@@ -87,6 +87,23 @@ export const NodeConfig = {
           { verts: [0, 0, 72, 0, 72, 81, 0, 81], id: 'B4-r', x: 590, y: 703 },
           { verts: [0, 0, 107, 0, 107, 63, 0, 63], id: 'B5-r', x: 657, y: 772 },
           { verts: [0, 0, 68, 0, 68, 72, 0, 72], id: 'B6-r', x: 688, y: 699 }
+        ]
+      }
+    },
+    stack: {
+      radiant: {
+        type: STACK,
+        attributes: {
+          alpha: 0.8,
+          color: 0x0cd3f56
+        },
+        points: [
+          { rotation: -0.52, times: [54, 53, 51], textx: 16, texty: 9, id: 'Pl1-r', x: 340, y: 490 },
+          { rotation: -1.5, times: [54, 53, 51], textx: 0, texty: 14, id: 'Pl2-r', x: 433, y: 737 },
+          { rotation: -0.26, times: [55], textx: 15, texty: 7, id: 'Pl3-r', x: 490, y: 682 },
+          { rotation: 3, times: [54, 53, 51], textx: -15, texty: 15, id: 'Pl4-r', x: 615, y: 745 },
+          { rotation: 0.86, times: [53], textx: 60, texty: 0, id: 'Pl5-r', x: 710, y: 807 },
+          { rotation: 3, times: [54, 53], textx: 30, texty: -30, id: 'Pl6-r', x: 712, y: 734 }
         ]
       }
     }
