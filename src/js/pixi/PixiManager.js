@@ -1,7 +1,7 @@
 import PIXI from 'pixi.js';
 import { NodeConfig } from './NodeConfig';
-import { WardNode, BoxNode, TowerNode, PullNode } from './MapNodes';
-import { NEUTRAL, WARD, BOX, TOWER, STACK } from '../constants/MapConstants';
+import { WardNode, BoxNode, TowerNode, SentryNode, PullNode } from './MapNodes';
+import { NEUTRAL, WARD, BOX, TOWER, SENTRY, PULL, STACK } from '../constants/MapConstants';
 
 let instance = null;  // Singleton instance reference
 let stage = null;     // Root PIXI.Container object
@@ -80,7 +80,7 @@ export default class PixiManager {
   }
 
   /*
-    Starts reading in a configuration group by group.
+    Starts reading in a configuration, group by group.
     Groups are semantically related collections of filters
     like 'wards' or 'camps'
   */
@@ -95,7 +95,7 @@ export default class PixiManager {
   }
 
   /*
-    Starts reading in a group filter by filter
+    Starts reading in a group, filter by filter
     Filters are a category of nodes on the map identified by their color
   */
   readFilter(group, groupKey) {
@@ -121,7 +121,7 @@ export default class PixiManager {
   }
 
   /*
-    Starts reading in a filter faction by faction
+    Starts reading in a filter, faction by faction
     Filters are a category of nodes on the map identified by their color
   */
   readFaction(factionFilter) {
@@ -158,16 +158,22 @@ export default class PixiManager {
                               point.verts, point.id, point.x, point.y, handleClick);
         break;
       case TOWER:
-        newNode = new TowerNode(attributes.towerColor,
+        newNode = new TowerNode(attributes.alpha,
+                                attributes.towerColor,
                                 attributes.detectionColor,
-                                attributes.alpha,
                                 attributes.range,
                                 point.id, point.x, point.y, handleClick);
         break;
-      case STACK:
+      case SENTRY:
+        newNode = new SentryNode(attributes.alpha,
+                              attributes.color,
+                              attributes.range,
+                              point.id, point.x, point.y, handleClick);
+        break;
+      case STACK || PULL:
         newNode = new PullNode(attributes.alpha,
                                attributes.color,
-                               point.rotation, point.times, point.textx, point.texty, 
+                               point.rotation, point.times, point.textx, point.texty,
                                point.id, point.x, point.y, handleClick);
         break;
     }

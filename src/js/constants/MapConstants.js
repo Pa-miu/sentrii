@@ -17,4 +17,5 @@ export const WARD = 'WARD';
 export const BOX = 'BOX';
 export const TOWER = 'TOWER';
 export const SENTRY = 'SENTRY';
+export const STACK = 'STACK';
 export const PULL = 'PULL';

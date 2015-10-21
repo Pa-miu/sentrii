@@ -1,4 +1,4 @@
-import { WARD, BOX, TOWER, STACK } from '../constants/MapConstants';
+import { WARD, BOX, TOWER, SENTRY, PULL, STACK } from '../constants/MapConstants';
 
 export const NodeConfig = {
   wards: {
@@ -52,9 +52,9 @@ export const NodeConfig = {
       neutral: {
         type: TOWER,
         attributes: {
+          alpha: 0.4,
           towerColor: 0xe9e95d,
           detectionColor: 0x4b91e7,
-          alpha: 0.4,
           range: 55
         },
         points: [
@@ -67,6 +67,19 @@ export const NodeConfig = {
           { id: 'T1-b-r', x: 807, y: 883 },
           { id: 'T2-b-r', x: 475, y: 885 },
           { id: 'T3-b-r', x: 275, y: 886 }
+        ]
+      }
+    },
+    sentry: {
+      neutral: {
+        type: SENTRY,
+        attributes: {
+          alpha: 0.4,
+          color: 0x4b91e7,
+          range: 52
+        },
+        points: [
+          { id: 'S1', x: 650, y: 642 }
         ]
       }
     }

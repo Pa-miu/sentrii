@@ -57,12 +57,12 @@ export class BoxNode extends MapNode {
 }
 
 export class TowerNode extends MapNode {
-  constructor(towerColor, detectionColor, alpha, range, ...base) {
+  constructor(alpha, towerColor, detectionColor, range, ...base) {
     super(...base);
-    this.draw(towerColor, detectionColor, alpha, range);
+    this.draw(alpha, towerColor, detectionColor, range);
   }
 
-  draw(towerColor, detectionColor, alpha, range) {
+  draw(alpha, towerColor, detectionColor, range) {
     this.lineStyle(2, detectionColor, 1);
     this.beginFill(detectionColor, alpha);
     this.drawCircle(0, 0, range);
@@ -78,12 +78,37 @@ export class TowerNode extends MapNode {
   Extends MapNode.js to show detection over an area.
 */
 export class SentryNode extends MapNode {
+  constructor(alpha, color, range, ...base) {
+    super(...base);
+    this.draw(alpha, color, range);
+  }
 
+  draw(alpha, color, range) {
+    this.lineStyle(2, color, 1);
+    this.beginFill(color, alpha);
+    this.drawCircle(0, 0, range);
+    this.endFill;
+
+    this.lineStyle(2, 0x000000, 1);
+    this.beginFill(color);
+    this.drawCircle(0, 0, 8);
+    this.endFill();
+  }
 }
 
 /*
   Extends MapNode.js to show pull direction.
 */
+const arrowVerts = [
+  0, 2,
+  25, 2,
+  25, 8,
+  35, 0,
+  25, -8,
+  25, -2,
+  0, -2
+];
+
 export class PullNode extends MapNode {
   constructor(alpha, color, rotation, times, textx, texty, ...base) {
     super(...base);
@@ -91,15 +116,6 @@ export class PullNode extends MapNode {
   }
 
   draw(alpha, color, rotation, times, textx, texty) {
-    const arrowVerts = [
-      0, 3,
-      25, 3,
-      25, 8,
-      35, 0,
-      25, -8,
-      25, -3,
-      0, -3
-    ];
     const arrowGraphic = new PIXI.Graphics();
     arrowGraphic.lineStyle(2, color, 1);
     arrowGraphic.beginFill(color, alpha);
