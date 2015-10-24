@@ -1,11 +1,12 @@
 import { React, sinon, assert, expect, TestUtils } from '../test_exports';
 import FactionSwitch from '../../src/js/components/FactionSwitch';
 import * as MapActions from '../../src/js/actions/MapActions';
+import { RADIANT } from '../../src/js/constants/MapConstants';
 
 const props = {
   ontext: 'radiant',
   offtext: 'dire',
-  isRadiant: true,
+  faction: RADIANT,
   switchFaction: MapActions.switchFaction
 }
 

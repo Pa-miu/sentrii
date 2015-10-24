@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import { RADIANT } from '../constants/MapConstants';
 
 export default class FactionSwitch extends Component {
   constructor() {
@@ -12,8 +13,8 @@ export default class FactionSwitch extends Component {
 
   render() {
     return (
-      <div className={'faction-switch ' + (this.props.isRadiant ? 'radiant' : 'dire')} onClick={this.handleSwitch}>
-        <div className={'faction-switch-elements ' + (this.props.isRadiant ? 'move-right' : 'move-left')}>
+      <div className={'faction-switch ' + (this.props.faction === RADIANT ? 'radiant' : 'dire')} onClick={this.handleSwitch}>
+        <div className={'faction-switch-elements ' + (this.props.faction === RADIANT ? 'move-right' : 'move-left')}>
           <div className='switch-half radiant'>{this.props.ontext}</div>
           <div className='switch-handle'/>
           <div className='switch-half dire'>{this.props.offtext}</div>
@@ -24,7 +25,7 @@ export default class FactionSwitch extends Component {
 }
 
 FactionSwitch.propTypes = {
-  isRadiant: PropTypes.bool.isRequired,
+  faction: PropTypes.string.isRequired,
   offtext: PropTypes.string.isRequired,
   ontext: PropTypes.string.isRequired,
   switchFaction: PropTypes.func.isRequired

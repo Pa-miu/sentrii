@@ -1,9 +1,9 @@
 import { sinon, assert, expect } from '../test_exports';
 import reducer from '../../src/js/reducers/MapReducer';
-import { SWITCH_FACTION, TOGGLE_FILTER, TOGGLE_GROUP } from '../../src/js/constants/MapConstants';
+import { RADIANT, DIRE, SWITCH_FACTION, TOGGLE_FILTER, TOGGLE_GROUP } from '../../src/js/constants/MapConstants';
 
 const initialState = {
-  isRadiant: true,
+  faction: RADIANT,
   camps: {
     box: false,
     pull: false,
@@ -33,7 +33,7 @@ describe('MapReducer', () => {
       type: SWITCH_FACTION
     }
     let resultState = reducer(undefined, dummyAction);
-    expect(resultState.isRadiant).to.eql(false);
+    expect(resultState.faction).to.eql(DIRE);
   });
 
   it('should handle TOGGLE_FILTER', () => {

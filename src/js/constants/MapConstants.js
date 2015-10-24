@@ -6,3 +6,16 @@ export const TOGGLE_GROUP = 'TOGGLE_GROUP';
 // Component type constants
 export const FILTER_GROUP = 'FILTER_GROUP';
 export const FACTION_GROUP = 'FACTION_GROUP';
+
+// Faction names
+export const RADIANT = 'radiant';
+export const DIRE = 'dire';
+export const NEUTRAL = 'neutral';
+
+// Node types
+export const WARD = 'WARD';
+export const BOX = 'BOX';
+export const TOWER = 'TOWER';
+export const SENTRY = 'SENTRY';
+export const STACK = 'STACK';
+export const PULL = 'PULL';

@@ -3,6 +3,9 @@ import { FILTER_GROUP, FACTION_GROUP } from '../constants/MapConstants';
 import ControlLabel from './ControlLabel';
 import FilterToggle from './FilterToggle';
 import FactionSwitch from './FactionSwitch';
+import PixiManager from '../pixi/PixiManager';
+
+let pixi;   // The singleton pixi object that renders the canvas
 
 export default class MapContent extends Component {
   constructor() {
@@ -10,6 +13,15 @@ export default class MapContent extends Component {
     this.generateControls = this.generateControls.bind(this);
     this.generateFilterGroup = this.generateFilterGroup.bind(this);
     this.generateFactionGroup = this.generateFactionGroup.bind(this);
+  }
+
+  componentDidMount() {
+    pixi = new PixiManager(680, 680, this.refs.pixiContainer, this.props.faction, this.props.filters);
+  }
+
+  componentDidUpdate() {
+    pixi.recieveFilters(this.props.faction, this.props.filters);
+    pixi.update();
   }
 
   generateControls(configObject) {
@@ -24,9 +36,9 @@ export default class MapContent extends Component {
   }
 
   generateFilterGroup(configObject) {
-    const filters = [];
+    const filterArray = [];
     for (const key in configObject.filters) {
-      filters.push(
+      filterArray.push(
         <FilterToggle
           key={key}
           label={key}
@@ -43,7 +55,7 @@ export default class MapContent extends Component {
           toggleGroup={this.props.actions.toggleGroup}
           canToggleGroup
         />
-        {filters}
+        {filterArray}
       </div>
     );
   }
@@ -54,7 +66,7 @@ export default class MapContent extends Component {
         <ControlLabel label={configObject.label}/>
         <FactionSwitch
           switchFaction={this.props.actions.switchFaction}
-          isRadiant={configObject.isRadiant}
+          faction={configObject.faction}
           ontext={configObject.ontext}
           offtext={configObject.offtext}
         />
@@ -70,9 +82,7 @@ export default class MapContent extends Component {
         <div className='side-container left col-1-6 no-select'>
           {leftControls}
         </div>
-        <div className='pixi-container col-4-6 no-select'>
-          <img className='minimap' src='./images/minimap683-transparent2.png' alt='minimap 6.83'/>
-        </div>
+        <div className='pixi-container col-4-6 no-select' ref='pixiContainer'/>
         <div className='side-container right col-1-6 no-select'>
           {rightControls}
         </div>
@@ -87,6 +97,8 @@ MapContent.propTypes = {
     toggleFilter: PropTypes.func.isRequired,
     toggleGroup: PropTypes.func.isRequired
   }),
+  faction: PropTypes.string.isRequired,
+  filters: PropTypes.object.isRequired,
   leftControls: PropTypes.array,
   rightControls: PropTypes.array
 };
