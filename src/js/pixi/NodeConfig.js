@@ -211,7 +211,7 @@ export const NodeConfig = {
       radiant: {
         type: STACK,
         attributes: {
-          alpha: 0.8,
+          alpha: 0.5,
           color: 0x0cd3f56
         },
         points: [

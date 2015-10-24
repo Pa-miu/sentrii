@@ -102,9 +102,9 @@ export class SentryNode extends MapNode {
 const arrowVerts = [
   0, 2,
   25, 2,
-  25, 8,
+  25, 6,
   35, 0,
-  25, -8,
+  25, -6,
   25, -2,
   0, -2
 ];
