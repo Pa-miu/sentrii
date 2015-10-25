@@ -170,7 +170,8 @@ export default class PixiManager {
                               attributes.range,
                               point.id, point.x, point.y, handleClick);
         break;
-      case STACK || PULL:
+      case PULL:
+      case STACK:
         newNode = new PullNode(attributes.alpha,
                                attributes.color,
                                point.rotation, point.times, point.textx, point.texty,

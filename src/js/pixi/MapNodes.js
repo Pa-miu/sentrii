@@ -1,4 +1,5 @@
 import PIXI from 'pixi.js';
+import { secToMSS } from '../misc/utils';
 
 const Graphics = PIXI.Graphics;
 
@@ -102,9 +103,9 @@ export class SentryNode extends MapNode {
 const arrowVerts = [
   0, 2,
   25, 2,
-  25, 8,
+  25, 6,
   35, 0,
-  25, -8,
+  25, -6,
   25, -2,
   0, -2
 ];
@@ -130,7 +131,7 @@ export class PullNode extends MapNode {
     timesText.anchor.x = 0.5;
     let timesString = '';
     for (let i = 0; i < times.length; ++i) {
-      timesString = timesString + '0:' + times[i] + '\n';
+      timesString = timesString + secToMSS(times[i]) + '\n';
     }
     timesText.text = timesString;
 

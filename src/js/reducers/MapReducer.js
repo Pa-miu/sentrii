@@ -9,7 +9,7 @@ const initialState = {
     stack: false
   },
   truesight: {        // Filters for truesight
-    sentry: false,
+    // sentry: false,
     tower: false
   },
   wards: {            // Filters for wards
@@ -17,7 +17,7 @@ const initialState = {
     offense: false,
     defense: false,
     push: false,
-    utility: false
+    // utility: false
   }
 };
 
