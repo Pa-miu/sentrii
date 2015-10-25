@@ -207,6 +207,32 @@ export const NodeConfig = {
         ]
       }
     },
+    pull: {
+      radiant: {
+        type: PULL,
+        attributes: {
+          alpha: 0.5,
+          color: 0x2d54c7
+        },
+        points: [
+          { rotation: 3.17, times: [], textx: -17, texty: 9, id: 'Pl1-d', x: 239, y: 278 },
+          { rotation: 0.86, times: [], textx: 60, texty: 0, id: 'Pl1-r', x: 710, y: 807 },
+          { rotation: 1.3, times: [], textx: 30, texty: -30, id: 'Pl2-r', x: 712, y: 734 }
+        ]
+      },
+      dire: {
+        type: PULL,
+        attributes: {
+          alpha: 0.5,
+          color: 0x2d54c7
+        },
+        points: [
+          { rotation: -1.1, times: [], textx: 16, texty: 9, id: 'Pl1-d', x: 239, y: 278 },
+          { rotation: -2.4, times: [], textx: 34, texty: -13, id: 'Pl3-d', x: 225, y: 278 },
+          { rotation: -1.86, times: [], textx: 34, texty: -13, id: 'Pl2-d', x: 321, y: 219 }
+        ]
+      }
+    },
     stack: {
       radiant: {
         type: STACK,
@@ -215,12 +241,27 @@ export const NodeConfig = {
           color: 0x0cd3f56
         },
         points: [
-          { rotation: -0.52, times: [54, 53, 51], textx: 16, texty: 9, id: 'Pl1-r', x: 340, y: 490 },
-          { rotation: -1.5, times: [54, 53, 51], textx: 0, texty: 14, id: 'Pl2-r', x: 433, y: 737 },
-          { rotation: -0.26, times: [55], textx: 15, texty: 7, id: 'Pl3-r', x: 490, y: 682 },
-          { rotation: 3, times: [54, 53, 51], textx: -15, texty: 15, id: 'Pl4-r', x: 615, y: 745 },
-          { rotation: 0.86, times: [53], textx: 60, texty: 0, id: 'Pl5-r', x: 710, y: 807 },
-          { rotation: 3, times: [54, 53], textx: 30, texty: -30, id: 'Pl6-r', x: 712, y: 734 }
+          { rotation: -0.52, times: [55, 54, 54], textx: 16, texty: 9, id: 'St1-r', x: 340, y: 490 },
+          { rotation: -1.5, times: [55, 55, 54, 54, 53], textx: 0, texty: 14, id: 'St2-r', x: 433, y: 737 },
+          { rotation: -0.26, times: [55, 55, 54], textx: 15, texty: 7, id: 'St3-r', x: 490, y: 682 },
+          { rotation: 3, times: [55, 55, 54, 54], textx: -15, texty: 15, id: 'St4-r', x: 615, y: 745 },
+          { rotation: 0.86, times: [55], textx: 60, texty: 0, id: 'St5-r', x: 725, y: 807 },
+          { rotation: 3, times: [55, 54, 54], textx: -34, texty: 15, id: 'St6-r', x: 712, y: 734 }
+        ]
+      },
+      dire: {
+        type: STACK,
+        attributes: {
+          alpha: 0.5,
+          color: 0x0cd3f56
+        },
+        points: [
+          { rotation: -0.1, times: [55, 55, 54, 54, 53], textx: 16, texty: 9, id: 'St1-d', x: 239, y: 278 },
+          { rotation: -1.9, times: [55, 55, 54, 54, 53], textx: 34, texty: -13, id: 'St2-d', x: 321, y: 219 },
+          { rotation: -1.3, times: [55, 55, 54, 54, 54], textx: -5, texty: 7, id: 'St3-d', x: 415, y: 333 },
+          { rotation: -1.5, times: [55, 55, 55], textx: -5, texty: 12, id: 'St4-d', x: 481, y: 268 },
+          { rotation: -1.2, times: [55, 55, 54, 54, 54], textx: -5, texty: 12, id: 'St5-d', x: 590, y: 286 },
+          { rotation: 3, times: [55, 55, 54, 54], textx: -10, texty: 12, id: 'St6-d', x: 768, y: 565 }
         ]
       }
     }
