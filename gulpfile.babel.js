@@ -137,7 +137,7 @@ gulp.task('buildImages', () => {
 const exec = require('child_process').exec;
 gulp.task('start', (cb) => {
   // Using https://www.npmjs.com/package/http-server
-  exec("http-server dev -o", (err, stdout, stderr) => {
+  exec('http-server dev -o', (err, stdout, stderr) => {
     console.log(stdout);
     console.log(stderr);
     cb(err);
